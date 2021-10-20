@@ -14,5 +14,7 @@
 		INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location)
 		VALUES (#{name},#{content},#{phone},#{addr},#{menu},#{opentime},#{closetime},#{grade},#{location})
 	</insert>
-
+	<select id="getRan" resultType="Cafe">
+		select * from cafe order by grade desc limit 3;
+	</select>
 </mapper>

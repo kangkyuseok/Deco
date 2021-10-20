@@ -1,21 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>deco ::리뷰목록</title>
+<meta charset="UTF-8">
 </head>
+<title>deco ::由щ럭紐⑸줉</title>
 <body>
-
-
-	<button>리뷰 리스트</button>
-	<br>
+<div>
+</div>
+	<div>
+	<form action="review.deco" method="get">
+	<button>由щ럭 由ъ뒪�듃</button>
+	<c:forEach var="vo" items="${ReViewList}">
 	<ul>
-		<li>번호</li>
-		<li>닉네임</li>
-		<li>리뷰 내용</li>
-		<li>평점 조회수</li>
+		<li>${vo.nickname }</li>
+		<li>${vo.content }</li>
+		<li>${vo.grade }</li>
 	</ul>
+	</c:forEach>
+	</form>
+	</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,23 +37,23 @@
 	<li> 
 	 <ul >
 	 	<li>지역</li>
-	 	<li> <input type ="text" valut="{laction}" required="required"> </li>
+	 	<li> <input type ="text" value="{laction}" required="required"> </li>
 	 	<li>상호</li>
-	 	<li><input type ="text" valut="{name}" required="required"></li>
+	 	<li><input type ="text" value="{name}" required="required"></li>
 	 	<li>평점</li>
-	 	<li><input type ="text" valut="{garde}" required="required"> </li>
+	 	<li><input type ="text" value="{garde}" required="required"> </li>
 	 </ul>
 	</li>
 	<li> 
 		<ul >
 		 <li>내용</li>
-		 <li><input type ="text" valut="{content}" required="required"></li>
+		 <li><input type ="text" value="{content}" required="required"></li>
 		</ul>
 	</li>
 	<li> 
 	 	<ul>
 	 	 <li> 메뉴</li>
-	 	 <li>  <input type ="text" valut="{menu}" required="required"></li>
+	 	 <li>  <input type ="text" value="{menu}" required="required"></li>
 	 	</ul>
 	</li>
 	<li> 
@@ -66,20 +67,20 @@
 	 <ul >
 	 	
 		<li>영업시간</li>
-		<li><input type ="text" valut="{open}" required="required"></li>
-		<li><input type ="text" valut="{close}" required="required"></li>
+		<li><input type ="text" value="{open}" required="required"></li>
+		<li><input type ="text" value="{close}" required="required"></li>
 	 </ul>
 	</li>
 	<li> 
 		<ul >
 			<li> 주소 </li>
-			<li> <input type ="text" valut="{addr}" required="required"></li>
+			<li> <input type ="text" value="{addr}" required="required"></li>
 		</ul>
 	</li>
 	 <li> 
 	  <ul >
 	  	<li> 전화 번호</li>
-	  	<li> <input type ="text" valut="{phone}" required="required"></li>
+	  	<li> <input type ="text" value="{phone}" required="required"></li>
 	  </ul>
 	 </li>
 </ul>

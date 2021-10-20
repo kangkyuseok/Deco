@@ -10,6 +10,7 @@ import com.deco.mybatis.SqlSessionBean;
 
 public class CafeDao {
 
+	
 	private static CafeDao dao = new CafeDao();
 	private CafeDao() {}
 	public static CafeDao getInstance() {
@@ -35,24 +36,17 @@ public class CafeDao {
 	
 	public void insert(Cafe cafe) {
 		SqlSession mapper = factory.openSession();
-		mapper.insert("cafe.insert");
+		mapper.insert("cafe.insert",cafe);
 		mapper.commit();
 		mapper.close();
 	}
+	public List<Cafe> getRan() {
+		List<Cafe> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("cafe.getRan");
+		mapper.close();
+		return list;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

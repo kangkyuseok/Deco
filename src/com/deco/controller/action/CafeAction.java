@@ -16,7 +16,6 @@ public class CafeAction implements Action {
 			throws ServletException, IOException {
 
 		int idx = Integer.parseInt(request.getParameter("idx"));
-//		int idx = 1;
 		
 		CafeDao dao= CafeDao.getInstance();
 		
