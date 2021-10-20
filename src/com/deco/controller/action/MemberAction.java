@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.Document;
 
 import com.deco.dao.UsersDao;
 import com.deco.dto.SessionDto;
@@ -23,7 +24,9 @@ public class MemberAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-		String email = request.getParameter("email");
+		String str_email01 = request.getParameter("str_email01");
+		String str_email02 = request.getParameter("str_email02");
+		String email = str_email01+"@"+str_email02;
 		String gender = request.getParameter("gender");
 		int age = Integer.parseInt(request.getParameter("age"));
 		String phone = request.getParameter("phone");
@@ -35,6 +38,7 @@ public class MemberAction implements Action {
 		dto.setName(name);
 		dto.setPassword(password);
 		dto.setEmail(email);
+		
 		dto.setGender(gender);
 		dto.setAge(age);
 		dto.setPhone(phone);

@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>day3 [2]-회원 등록</title>
 <!-- 스타일 참고  -->
-<link rel="stylesheet" href="tcss.css?v=3">
-<link rel="stylesheet" href="../css/tcss.css">
+<link rel="stylesheet" href="bootstrap.css?v=3">
+<link rel="stylesheet" href="../cssbo/bootstrap.css">
 <script>
 	function validCheck() {
 		const frm = document.frmReg;
@@ -24,14 +24,14 @@
 			frm.age.focus();
 			return false;
 		}
-		/* if(frm.email.value){
-			alert('영어만 가능 합니다.')
-			frm.email.focus();
-			retrun false;
-		} */
-		//체크한것 이 한개도 없으면 여기와서 실행합니다.
+	 
+	    if(frm.name.value.length<2){
+	        alert("이름을 2자 이상 입력해주십시오.")
+	        frm.name.focus();
+	        return false;
+	    }
 		
-		return false;
+		/* return false; */
 	}
 	
 	function gohome(){
@@ -39,14 +39,15 @@
 	}
 	/* function checkMail(email) {
         //mail이 입력되었는지 확인하기
+        const frm = document.frmReg;
         if (!checkExistData(email, "이메일을"))
             return false;
         
         var emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9][A-Za-z0-9]+[A-Za-z0-9]$/;
         if (!emailRegExp.test(email)) {
             alert("이메일 형식이 올바르지 않습니다!");
-            form.mail.value = "";
-            form.mail.focus();
+            frm.email.value = "";
+            frm.email.focus();
             return false;
         }
         return true; //확인이 완료되었을 때
@@ -74,9 +75,7 @@
             }
         }).open();
     }
-    
-    
-    
+   
 </script>
     
     
@@ -87,7 +86,8 @@
 <body>
 	<div style="width: 70%; margin: auto;">
 		<h3>회원 등록</h3>
-		<form action="memberAction.deco" name="frmReg" method="post">
+		<form action="memberAction.deco" name="frmReg" method="post"
+		onsubmit="return validCheck()">
 			<table style="width: 100%">
 				
 				<tr>
@@ -102,13 +102,41 @@
 				</tr>
 				<tr>
 					<td><label>이메일</label></td>
-					<td><input type="email" name="email" placeholder="이메일을 입력하세요" required>
-					@<select>
-							<option value="naver.com" selected>naver.com</option>
-							<option value="nate.com" >nate.com</option>
-							<option value="daum.net">daum.net</option>
-							<option value="google.com">google.com</option>
-							</select>
+					<td><input type="text" name="str_email01" id="str_email01" style="width:100px"> @ 
+<input type="text" name="str_email02" id="str_email02" style="width:100px;">
+<select style="width:100px;margin-right:10px" name="str_email02" id="selectEmail"> 
+<option value="1">직접입력</option> 
+<option value="naver.com" selected>naver.com</option> 
+<option value="hanmail.net">hanmail.net</option> 
+<option value="hotmail.com">hotmail.com</option> 
+<option value="nate.com">nate.com</option> 
+<option value="yahoo.co.kr">yahoo.co.kr</option> 
+<option value="empas.com">empas.com</option> 
+<option value="dreamwiz.com">dreamwiz.com</option> 
+<option value="freechal.com">freechal.com</option> 
+<option value="lycos.co.kr">lycos.co.kr</option> 
+<option value="korea.com">korea.com</option> 
+<option value="gmail.com">gmail.com</option> 
+<option value="hanmir.com">hanmir.com</option> 
+<option value="paran.com">paran.com</option> 
+</select>
+
+
+					
+					
+					
+					
+					
+					
+					
+					
+					<!-- <input name="email" placeholder="이메일을 입력하세요" required>
+					<select name="email">
+							<option value="naver.com" selected>@naver.com</option>
+							<option value="nate.com" >@nate.com</option>
+							<option value="daum.net">@daum.net</option>
+							<option value="google.com">@google.com</option>
+							</select> -->
 					</td>
 				</tr>
 				<tr>
@@ -183,5 +211,18 @@
 	});
 	</script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> 
+<script type="text/javascript">
+$('#selectEmail').change(function(){ 
+$("#selectEmail option:selected").each(function () { 
+if($(this).val()== '1'){ 
+	$("#str_email02").val('');
+	$("#str_email02").attr("disabled",false); //활성화 
+}else{ //직접입력이 아닐경우
+	$("#str_email02").val($(this).text()); //선택값 입력
+$("#str_email02").attr("disabled",true); //비활성화
+ } }); }); </script>
 </body>
 </html>

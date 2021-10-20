@@ -12,7 +12,7 @@
 </div>
 	<div>
 	<form action="review.deco" method="get">
-	<button>리뷰 리스트</button>
+	<h3>리뷰 리스트</h3>
 	<c:forEach var="vo" items="${ReViewList}">
 	<ul>
 		<li>${vo.nickname }</li>

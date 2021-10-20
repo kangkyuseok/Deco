@@ -5,7 +5,7 @@
   
 <mapper namespace="review">
   <select id="getList" resultType="ReView" parameterType="double">
-		select * from review order by grade desc;
+		select * from review order by grade desc
 	</select>
 </mapper>
 
