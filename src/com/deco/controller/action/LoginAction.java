@@ -1,7 +1,6 @@
 package com.deco.controller.action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,41 +17,34 @@ public class LoginAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
+		String id = request.getParameter("userId");
+		String password = request.getParameter("password");
 		
-		HttpSession session = request.getSession();
-		String id=request.getParameter("userId");
-		String password=request.getParameter("password");
-		
-		if(session.getAttribute("readIdx") ==null){
-			StringBuilder readIdx=new StringBuilder("/");
-			session.setAttribute("readIdx", readIdx);
-		}
+		HttpSession session = request.getSession();		// session 객체 생성
 		
 		Map<String,String> map = new HashMap<>();
-		map.put("email",id);
-		map.put("password",password);
-
-		//2) db 테이블 select 쿼리 실행	
+		map.put("email", id);
+		map.put("password", password);
+		System.out.println(map);
 		UsersDao dao = UsersDao.getInstance();
 		SessionDto user = dao.login(map);
-		if(user !=null){
-		//로그인 정보 일치
+		System.out.println(user);
+		if(user != null){
+			//로그인 정보 일치
 			session.setAttribute("user", user);
 			request.setAttribute("message", "로그인 되었습니다.");
 			request.setAttribute("url", "home.jsp");
-			
-		}else {
-			
+//			pageContext.forward("error/alert.jsp");		//pagecontext.forward 페이지 이동, include 해당페이지 포함.
+		} else{
+			//로그인 정보 불일치
 			request.setAttribute("message", "로그인 정보가 올바르지 않습니다.");
-			request.setAttribute("url", "home_login.jsp");   //변경
-			//pageContext.include("error/alert.jsp");
+			request.setAttribute("url", "home_login.jsp");
+//			pageContext.forward("error/alert.jsp");		//pagecontext.forward 페이지 이동, include 해당페이지 포함.
 		}
-		ActionForward foward = new ActionForward();
-		foward.isRedirect = false;
-		foward.url="error/alert.jsp";   
-		return foward;
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
+		forward.setUrl("error/alert.jsp");
+		return forward;
 	}
 
 }

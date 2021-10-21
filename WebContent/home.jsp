@@ -17,22 +17,23 @@
 	</c:if>
 		<c:if test="${sessionScope.user != null }">
 		<!-- 로그인된 상태 -->
-		<br>${user.nickname }  님 반갑습니다. <br>
-		<a href="./" class="menu">로그아웃</a>
+		<br>${user.name }(${user.email })  님 반갑습니다. <br>
+		<a href="logout.deco" class="menu">로그아웃</a>
 		<a href="" >마이페이지</a>
+		
 	</c:if>
     	</li>
     </ul>
 </nav>
 <hr>
 <section>
- <input type="button" href="c" value="검색하기">
- <input type="button" onclick ="location.href = 'best.deco'" value="금주의 핫플">
-<input type="button" onclick ="location.href = 'review.deco'" value="리뷰 목록">
- 	
- 
- <input type="button" onclick="location.href='cafeInsert.deco'" value="추천등록">
- 		<a href="cafe.deco?idx=1" class=" ">상세보기</a>
+ <input type="button" onclick="location.href='list.deco'" value="검색하기"></input>
+ <input type="button" href="" value="금주의 핫플"></input>
+ <input type="button" onclick="location.href='cafeInsert.deco'" value="추천등록"></input>
+ <a href="list.deco" class=" ">리스트 보기</a>
+ <a href="cafe.deco?idx=1" class=" ">상세보기</a>
+ <a href="dibsList.deco" class=" ">찜목록</a>
+ <a href="reviewList.deco" class=" ">리뷰목록</a>
 </section>
 <hr>
 

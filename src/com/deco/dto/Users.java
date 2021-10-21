@@ -5,14 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Users {
 	private int idx;
 	private String name;
 	private String password;
 	private String email;
-	
 	private String gender;
 	private int age;
 	private String phone;

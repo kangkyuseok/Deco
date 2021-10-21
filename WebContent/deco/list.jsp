@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>DECO 당신의 하루를 꾸미다.</title>
+<title>DECO 당신의 하루를 꾸미다</title>
 </head>
 <body>
 	<div>
-    <a href="./">
+    <a href="home.deco">
       <img src="" alt="">
       <span>DECO</span>
     </a>
@@ -38,19 +38,18 @@
         <input type="reset" value="초기화">
     </form>
   </div>
-  
+  <div>왜안돼왜안돼</div>
   <div>
     <c:forEach var="vo" items="${CafeList}">
     <ul>
-    	<!-- <li><img src="img/dino.png" alt=""></li> -->
-    	<li>${vo.name }dd</li>
-    	<li>${vo.content }</li>
-    	<li>${vo.phone }</li>
-    	<li>${vo.addr }</li>
-    	<li>${vo.menu }</li>
-    	<li>${vo.grade }</li>
-    	<li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
-    	<li>${vo.location }</li>
+    	<li>${vo.name }</li>
+       <li>${vo.content }</li>
+       <li>${vo.phone }</li>
+       <li>${vo.addr }</li>
+       <li>${vo.menu }</li>
+       <li>${vo.grade }</li>
+       <li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
+       <li>${vo.location }</li>
     </ul>
     </c:forEach>
   </div>

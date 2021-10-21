@@ -8,7 +8,7 @@
   	select * from users where idx = #{idx}
   </select>
   
-  <insert id="insert" parameterType="Users"> 
+  <insert id="insert" parameterType="Users">
   	insert into users(name,password,email,gender,age,phone,addr,nickname)
 	values(#{name},#{password},#{email},#{gender},#{age},#{phone},#{addr},#{nickname})
   </insert>
@@ -17,11 +17,13 @@
   <update id="update" parameterType="Users">
   	update users set age=#{age},phone=#{phone} where idx=#{idx} 
   </update>
-   <select id="loginCheck" parameterType="java.util.Map" resultType="SessionDto">
-      select * from users where email = #{email} 
-      and password = #{password}
-   </select>
+  
+  
+  <!-- 로그인정보 session에 담기 위한 메소드 -->
+  <select id="loginCheck" parameterType="java.util.Map" resultType="SessionDto">
+		select * from users where email = #{email} 
+		and password = #{password}
+	</select>
+  
+  
 </mapper>
-
-<!-- useGeneratedKeys="true"
-				keyColumn="idx" keyProperty="idx" -->

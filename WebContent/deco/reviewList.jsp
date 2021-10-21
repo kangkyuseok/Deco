@@ -12,8 +12,8 @@
 </div>
 	<div>
 	<form action="review.deco" method="get">
-	<h3>리뷰 리스트</h3>
-	<c:forEach var="vo" items="${ReViewList}">
+	<h3>리뷰리스트</h3>
+	<c:forEach var="vo" items="${ReviewList}">
 	<ul>
 		<li>${vo.nickname }</li>
 		<li>${vo.content }</li>

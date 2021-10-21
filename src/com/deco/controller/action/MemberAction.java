@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.Document;
 
 import com.deco.dao.UsersDao;
 import com.deco.dto.SessionDto;
@@ -22,23 +21,22 @@ public class MemberAction implements Action {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+		
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-		String str_email01 = request.getParameter("str_email01");
-		String str_email02 = request.getParameter("str_email02");
-		String email = str_email01+"@"+str_email02;
+		String email = request.getParameter("email");
 		String gender = request.getParameter("gender");
 		int age = Integer.parseInt(request.getParameter("age"));
 		String phone = request.getParameter("phone");
 		String addr = request.getParameter("addr");
 		String nickname = request.getParameter("nickname");
+		System.out.println(name);
 		
 		Users dto = new Users();
 		
 		dto.setName(name);
 		dto.setPassword(password);
 		dto.setEmail(email);
-		
 		dto.setGender(gender);
 		dto.setAge(age);
 		dto.setPhone(phone);
@@ -47,12 +45,9 @@ public class MemberAction implements Action {
 		
 		UsersDao dao = UsersDao.getInstance();
 		dao.insert(dto);
-		
-		request.setAttribute("message", "회원가입이 완료되었습니다.");
-		request.setAttribute("url", "home.jsp");
 		ActionForward forward = new ActionForward();
 		forward.isRedirect = false;
-		forward.url="error/alert.jsp";
+		forward.url="deco/memberView.jsp";
 		return forward;
 	}
 }

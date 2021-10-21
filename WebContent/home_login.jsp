@@ -16,7 +16,7 @@
     <input type="submit" value="login">
     <div>아직 회원이 아니신가요?</div>
     <a href="member.deco">회원가입</a>
-    <!-- <a href="cafe.deco?idx=1" class=" ">상세보기</a> -->
+    <a href="cafe.deco?idx=1" class=" ">상세보기</a>
   </form>
 </body>
 </html>

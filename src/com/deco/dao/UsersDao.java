@@ -9,7 +9,6 @@ import com.deco.dto.SessionDto;
 import com.deco.dto.Users;
 import com.deco.mybatis.SqlSessionBean;
 
-
 public class UsersDao {
 
 	private static UsersDao dao = new UsersDao();
@@ -21,33 +20,37 @@ public class UsersDao {
 	SqlSessionFactory factory = SqlSessionBean.getSessionFactory();
 	
 	
-	
 	public Users getUser(int idx) {
 		SqlSession mapper = factory.openSession();
-		Users users = mapper.selectOne("users.getUser");
+		Users users = mapper.selectOne("getUser");
 		mapper.close();
 		return users;
 	}
 	
 	public void insert(Users users) {
 		SqlSession mapper = factory.openSession();
-		mapper.insert("users.insert",users);
+		mapper.insert("users.insert", users);
 		mapper.commit();
 		mapper.close();
-		
 	}
 	
 	public void update(Users users) {
 		SqlSession mapper = factory.openSession();
-		mapper.update("update");
+		mapper.update("users.update", users);
 		mapper.commit();
 		mapper.close();
 	}
+	
+	// SesstionDto 이용해서 로그인 정보 가져오기
 	public SessionDto login(Map<String, String> map) {
-	      SessionDto dto = null;
-	      SqlSession mapper = factory.openSession();
-	      dto = mapper.selectOne("loginCheck", map);
-	      mapper.close();
-	      return dto;
-	   }
-  }	
+		SessionDto dto = null;
+		SqlSession mapper = factory.openSession();
+		dto = mapper.selectOne("loginCheck", map);
+		mapper.close();
+		return dto;
+	}
+	
+	
+	
+	
+}

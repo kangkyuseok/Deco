@@ -19,7 +19,7 @@ public class CafeInsertAction implements Action {
 		String addr = request.getParameter("addr");
 		String location = request.getParameter("location");
 		String menu = request.getParameter("menu");
-		double grade= Double.parseDouble(request.getParameter("grade"));
+		int grade= Integer.parseInt(request.getParameter("grade"));
 		String phone = request.getParameter("phone");
 		String opentime = request.getParameter("opentime");
 		String closetime = request.getParameter("closetime");
