@@ -126,7 +126,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" style="text-align: center"><input
-						type="submit" value="가입하기" onclick="location href = './'"> <!-- submit : 서버에게 데이터를 제출 (form action 속성값에 설정된 url 로 데이터 전달.)
+						type="submit" value="가입하기" > <!-- submit : 서버에게 데이터를 제출 (form action 속성값에 설정된 url 로 데이터 전달.)
 						action 이 .html 은 데이터 전송확인은 못합니다. url 이동만 확인!!--> <input
 						type="reset" value="다시쓰기"></td>
 				</tr>
