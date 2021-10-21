@@ -10,10 +10,11 @@
 <body>
 <h1 id="title"><img id="icon" alt="icon" src="img/icon2.png">deco</h1>
 <nav>
+
 	<ul>
 	<li id="login" >
     <c:if test="${sessionScope.user == null }">
-		<a href="login.deco" class="menu">로그인</a>
+		<a href="home_login.jsp" class="menu">홈으로</a>
 	</c:if>
 		<c:if test="${sessionScope.user != null }">
 		<!-- 로그인된 상태 -->
@@ -36,6 +37,11 @@
  <a href="reviewList.deco" class=" ">리뷰목록</a>
 </section>
 <hr>
+
+
+
+
+
 
 </body>
 </html>

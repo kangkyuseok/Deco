@@ -1,5 +1,7 @@
 package com.deco.dto;
 
+import com.mysql.cj.Session;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +19,6 @@ public class Users {
 	private String phone;
 	private String addr;
 	private String nickname;
+	
+	
 }

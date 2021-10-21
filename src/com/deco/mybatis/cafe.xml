@@ -19,5 +19,7 @@
  		menu=#{menu},opentime=#{opentime},closetime=#{closetime},location=#{location}
  		where idx=#{idx}
  	</update>
-
+	<select id="getRan" resultType="Cafe">
+		select * from cafe order by rand() limit 1
+	</select>
 </mapper>

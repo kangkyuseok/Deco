@@ -10,24 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 import com.deco.dao.CafeDao;
 import com.deco.dto.Cafe;
 
-public class ListAction implements Action {
+public class HomeLoginAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ActionForward forward = new ActionForward();
+
+		ActionForward foward =new ActionForward();
+		
 		
 		CafeDao dao = CafeDao.getInstance();
 		
-		List<Cafe> list = dao.getList();
-		
-		request.setAttribute("CafeList", list);
-		
+		List<Cafe> list = dao.getRan();
+		request.setAttribute("CafeList",list);
 		System.out.println(list);
-		System.out.println(list.size());
-		forward.isRedirect = false;
-		forward.url="deco/list.jsp";
-		return forward;
+		foward.isRedirect = false;
+		foward.url="home_login.jsp";
+		return foward;
 	}
 
 }

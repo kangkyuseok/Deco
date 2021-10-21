@@ -48,7 +48,13 @@ public class CafeDao {
 		
 	}
 	
-	
+	public List<Cafe> getRan(){
+		List<Cafe> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("cafe.getRan");
+		mapper.close();
+		return list;
+	}
 	
 	
 	

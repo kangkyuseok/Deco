@@ -15,6 +15,7 @@ import com.deco.controller.action.CafeAction;
 import com.deco.controller.action.CafeInsertAction;
 import com.deco.controller.action.CafeUpdateAction;
 import com.deco.controller.action.DibsListAction;
+import com.deco.controller.action.HomeLoginAction;
 import com.deco.controller.action.ListAction;
 import com.deco.controller.action.LoginAction;
 import com.deco.controller.action.LogoutAction;
@@ -43,7 +44,7 @@ public class FrontController extends HttpServlet {
 //		ActionForward forward = new ActionForward();
 		
 		String spath = request.getServletPath();
-		System.out.println(spath);
+		//System.out.println(spath);
 //		forward.setRedirect(false);
 //		forward.setUrl("./");
 		String url="./";
@@ -76,16 +77,27 @@ public class FrontController extends HttpServlet {
 			forward = action.execute(request, response);
 		}else if(spath.equals("/cafeInsert.deco")) {
 			forward = new ActionForward(false,"deco/cafeInsert.jsp");
-		}else if(spath.equals("/cafeInsertAction.deco")) {
-			Action action = new CafeInsertAction();
+		}else if(spath.equals("/cafeInsertAction.deco"))
+		{	Action action = new CafeInsertAction();
 			forward = action.execute(request, response);
 		}else if(spath.equals("/reviewList.deco")) {
 			Action action = new ReviewListAction();
 			forward = action.execute(request, response);
+		}else if(spath.equals("/home_login.deco")) {
+			Action action = new HomeLoginAction();
+			forward = action.execute(request, response);
 		}
 		
 		
+		/*
+		 * else if(spath.equals("/homeLoginAction.deco")) { Action action = new
+		 * HomeLoginAction(); forward = action.execute(request, response); }
+		 */
 		
+		/*
+		 * else if(spath.equals("/home_login.deco")) { Action action = new
+		 * HomeLoginAction(); forward = action.execute(request, response); }
+		 */
 		
 		
 		
@@ -103,4 +115,4 @@ public class FrontController extends HttpServlet {
 				} 
 		
 		}
-}
+}		
