@@ -12,5 +12,7 @@
   	<select id="getCafeDibs" resultType="Cafe" parameterType="int">
   		select * from cafe where idx=#{idxCafe}
   	</select>
-  	
+  	<update id="updateCafeDibs" parameterType="String">
+  		update dibs set dibCafe=#{dibCafe} where nickname=#{nickname}
+  	</update>
 </mapper>

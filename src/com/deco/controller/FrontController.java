@@ -15,13 +15,20 @@ import com.deco.controller.action.CafeAction;
 import com.deco.controller.action.CafeInsertAction;
 import com.deco.controller.action.CafeUpdateAction;
 import com.deco.controller.action.DibsListAction;
+import com.deco.controller.action.DibsUpdateAction;
 import com.deco.controller.action.HomeLoginAction;
 import com.deco.controller.action.ListAction;
 import com.deco.controller.action.LoginAction;
 import com.deco.controller.action.LogoutAction;
 import com.deco.controller.action.MemberAction;
 import com.deco.controller.action.ModifyAction;
+
+import com.deco.controller.action.ReviewAction;
 import com.deco.controller.action.ReviewListAction;
+import com.deco.controller.action.UserInfoAction;
+import com.deco.controller.action.UserInfoModifyAction;
+import com.deco.controller.action.UserInfoUpdateAction;
+import com.deco.controller.action.deleteAction;
 
 @WebServlet("*.deco")
 public class FrontController extends HttpServlet {
@@ -69,6 +76,8 @@ public class FrontController extends HttpServlet {
 		}else if(spath.equals("/dibsList.deco")) {
 			Action action = new DibsListAction();
 			forward = action.execute(request, response);
+		}else if(spath.equals("/dibsList.deco")) {
+			forward = new ActionForward(false,"dibsList.jsp");
 		}else if(spath.equals("/cafeUpdate.deco")) {
 			Action action = new CafeUpdateAction();
 			forward = action.execute(request, response);
@@ -77,8 +86,11 @@ public class FrontController extends HttpServlet {
 			forward = action.execute(request, response);
 		}else if(spath.equals("/cafeInsert.deco")) {
 			forward = new ActionForward(false,"deco/cafeInsert.jsp");
-		}else if(spath.equals("/cafeInsertAction.deco"))
-		{	Action action = new CafeInsertAction();
+		}else if(spath.equals("/cafeInsert.deco")){
+			Action action = new CafeInsertAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/cafeInsertAction.deco")){
+			Action action = new CafeInsertAction();
 			forward = action.execute(request, response);
 		}else if(spath.equals("/reviewList.deco")) {
 			Action action = new ReviewListAction();
@@ -86,33 +98,47 @@ public class FrontController extends HttpServlet {
 		}else if(spath.equals("/home_login.deco")) {
 			Action action = new HomeLoginAction();
 			forward = action.execute(request, response);
+		}else if(spath.equals("/mypage.deco")) {
+			forward = new ActionForward(false,"deco/mypage.jsp");
+		}else if (spath.equals("/userInfo.deco")) {
+	         Action action = new UserInfoAction();
+	         forward = action.execute(request, response);
+	      }else if (spath.equals("/userInfoUpdate.deco")) {
+	          Action action = new UserInfoUpdateAction();
+	          forward = action.execute(request, response);
+	       }else if(spath.equals("/mypageAction.deco")) {
+	    	   forward = new ActionForward(false,"deco/mypage.jsp");
+		}else if(spath.equals("/review.deco")) {
+			Action action = new ReviewAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("userInfoUpdateAction.deco")) {
+			Action action = new UserInfoUpdateAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/dibsUpdate.deco")) {
+			Action action = new DibsUpdateAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/deleteAction.deco")) {
+			Action action = new deleteAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("userInfoUpdate.deco")) {
+			Action action = new UserInfoUpdateAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/UserInfoModifyAction.deco")) {
+			Action action = new UserInfoModifyAction();
+			forward = action.execute(request, response);
+	
 		}
 		
 		
-		/*
-		 * else if(spath.equals("/homeLoginAction.deco")) { Action action = new
-		 * HomeLoginAction(); forward = action.execute(request, response); }
-		 */
 		
-		/*
-		 * else if(spath.equals("/home_login.deco")) { Action action = new
-		 * HomeLoginAction(); forward = action.execute(request, response); }
-		 */
+
 		
-		
-		
-		
-		
-		
-		
-		
-		// 이 시점에서 forward 에 isREdirct 와 url 값이 저장되어있으면 OK!
-				if(!forward.isRedirect()) {
-					RequestDispatcher rd = request.getRequestDispatcher(forward.getUrl());
-					rd.forward(request, response);
-				}else {
-					response.sendRedirect(forward.getUrl());
-				} 
-		
-		}
-}		
+		 if(!forward.isRedirect()) {
+	         RequestDispatcher rd = request.getRequestDispatcher(forward.getUrl());
+	         rd.forward(request, response);
+	      } else {
+	         response.sendRedirect(forward.getUrl());
+	      }
+		 
+	   }
+	}	

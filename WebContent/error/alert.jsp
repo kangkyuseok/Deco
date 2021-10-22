@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>세션 종료</title>
 </head>
 <body>
 <script type="text/javascript">

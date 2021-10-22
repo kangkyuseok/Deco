@@ -6,9 +6,11 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.deco.dao.CafeDao;
 import com.deco.dto.Cafe;
+import com.deco.dto.SessionDto;
 
 public class HomeLoginAction implements Action {
 
@@ -16,17 +18,18 @@ public class HomeLoginAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		ActionForward foward =new ActionForward();
+		ActionForward forward =new ActionForward();
 		
+
 		
 		CafeDao dao = CafeDao.getInstance();
 		
 		List<Cafe> list = dao.getRan();
 		request.setAttribute("CafeList",list);
 		System.out.println(list);
-		foward.isRedirect = false;
-		foward.url="home_login.jsp";
-		return foward;
+		forward.isRedirect = false;
+		forward.url="home_login.jsp";
+		return forward;
 	}
 
 }
