@@ -16,13 +16,23 @@
     </div>
     <ul class="menu">
       <li><a href="cafeList.deco">Search</a></li>
-      <li><a href="">Hot Place</a></li>
-      <li><a href="">My Page</a></li>
+      <li><a href="best.deco">Hot Place</a></li>
+      <li><a href="mypage.deco">My Page</a></li>
       <li><a href="">About Us</a></li>
+     
     </ul>
     <div class="nickname">
-      <a href="">이현수</a>
-      <span> 님 반갑습니다.</span>
+     <!-- <li id="logintest"> -->
+        <c:if test="${sessionScope.user == null}">
+	<a href="home_login.deco">로그인</a>
+	</c:if>
+	<c:if test="${sessionScope.user != null}">
+	<!-- 로그인 된 상태 -->
+	<br>(${user.nickname }) 님. 반갑습니다. <br>
+	<a href="logout.deco" class="menu">로그아웃</a>
+	</c:if>
+	<a href="mypage.deco" class="menu">마이페이지</a>
+	<!-- </li> -->
     </div>
   </header>
 </body>

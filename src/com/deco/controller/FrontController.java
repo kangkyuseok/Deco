@@ -96,6 +96,12 @@ public class FrontController extends HttpServlet {
 			forward = new ActionForward(false, "deco/join.jsp");
 		}else if(spath.equals("/mypage.deco")) {
 			forward = new ActionForward(false, "deco/mypage.jsp");
+			/*
+			 * }else if(spath.equals("/userinfoUpdate.deco")) { forward = new
+			 * ActionForward(false, "deco/userInfoUpdate.jsp"); }else
+			 * if(spath.equals("/userinfo.deco")) { forward = new ActionForward(false,
+			 * "deco/userInfo.jsp");
+			 */
 		}else if(spath.equals("/userInfo.deco")) {	// 회원 정보 받아서 userInfo.jsp
 			Action action = new UserInfoAction();
 			forward = action.execute(request, response);

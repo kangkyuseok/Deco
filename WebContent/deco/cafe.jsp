@@ -12,16 +12,16 @@
 <body>
 <div class="decoDetail">
     <nav class="category">
-      <a href="">Cafe</a>
-      <a href="">Restaurant</a>
-      <a href="">Show</a>
-      <a href="">Activity</a>
+      <a href="cafeList.deco">Cafe</a>
+      <a href="foodList.deco">Restaurant</a>
+      <a href="showsList.deco">Show</a>
+      <a href="etcList.deco">Activity</a>
     </nav>
 
  <ul class="detailContents">
       <li class="detailTitle">
-        <div class="detailName">카페 연남색</div>
-        <div class="detailText">수제 쿠키 맛집. 모든 재료는 직접 공수하며 매장에서 실제로 디저트를 베이킹.</div>
+        <div class="detailName">${cafe.name}</div>
+        <div class="detailText">${cafe.content}</div>
       </li>
       <li class="detailImg">
         <div class="outImg">
@@ -114,7 +114,7 @@
       </form>
     </section>
 
- <section class="reviewLists">
+ <%-- <section class="reviewLists">
       <div class="reviewList">
         <div class="reviewContents">
           <ul class="reviewNameGrade">
@@ -125,44 +125,41 @@
               <span>4.5</span>
             </li>
           </ul>
+          
           <div class="reviewText">
-            커피랑 케익이랑 너무 맛있어요!! 사진찍을곳도 많구 무엇보다 사진이 이쁘게 잘나와요!! 연인끼리 데이트하기에 딱 좋아요 ㅎㅎ
+            ${re.content}
           </div>
         </div>
         <div>
           <img class="reviewImg" src="img/연남동_cafe_out_1.png"></img>
         </div>  
-      </div>
+      </div> --%>
    
-
+<section class="reviewLists">
 <c:forEach var="re" items="${review}">
-  <li> 
-    <ul>
-       <li>${re.nickname}</li>
-       <li> 리뷰점수 :  ${re.grade}</li>
-       
-    </ul>
-  </li>
-   <li> 
-      <ul> 
-        <li> 
-         <pre> ${re.content}</pre>
-        </li>
-      <li><a href="javascript:deleteCmt('${re.idx}','${cafe.idx}','${re.grade}','${page}','${re.nickname}')">삭제</a></li>
-      </ul>
-   </li>
-   <li> 
-      <ul>
-         <li> 
-            <img alt="ca-re" src="/reviewimage/${re.imgfile}">
-         </li>
-      </ul>
-   </li>
-   </c:forEach> 
+<div class="reviewList">
+        <div class="reviewContents">
+          <ul class="reviewNameGrade">
+            <li>${re.nickname}</li>
+            <li>
+              <span>평점 : </span>
+              <span>${re.grade}</span>
+<a href="javascript:deleteCmt('${re.idx}','${cafe.idx}','${re.grade}','${page}','${re.nickname}')">댓글삭제</a>
+            </li>
+          </ul>
+          <div class="reviewText">
+            ${re.content}
+          </div>
+        </div>
+        <div>
+          <img class="reviewImg" src="/reviewimage/${re.imgfile}"></img>
+        </div>  
+      </div>
+   </c:forEach>
+      </section> 
+   </div>
 
 
-      </section>   
- </div>
 
 
 <section>

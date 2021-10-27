@@ -32,7 +32,7 @@
 }
 
 .decoJoinLogo {
-  font-size: calc(var(--font-title-bottom) * 1.5);
+  font-size: var(--font-title-bottom);
   padding: var(--padding);
   margin: var(--padding);
 }
@@ -81,10 +81,6 @@
   width: 337px;
 }
 
-.joinEmailSelect .gol {
-  margin-left: calc(var(--padding) / 3 * 2);
-}
-
 .joinGenderAge {
   display: flex;
   width: 100%;
@@ -101,7 +97,6 @@
   width: calc(var(--padding) * 14);
   align-items: center;
   justify-content: space-between;
-  margin-left: calc(var(--padding) / 3 * 2);
 }
 
 .gender input {
@@ -147,4 +142,10 @@
 
 #member_post {
   padding: 0 var(--padding);
+}
+
+/* 추가 */
+
+#str_email01 {
+  width: 100%;
 }

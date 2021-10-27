@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.deco.dao.FoodDao;
+import com.deco.dao.ReviewDao;
 import com.deco.dto.Food;
 import com.deco.dto.PageDto;
 import com.deco.dto.SessionDto;
@@ -64,6 +65,19 @@ public class FoodListAction implements Action {
 			map.put("location", location);
 			list = dao.getLocation(map);
 		}
+		ReviewDao rdao = ReviewDao.getInstance();
+
+
+		List<Integer> reviewcnts = new ArrayList<>();
+		for(int i=0;i<list.size();i++) {  
+			int reviewCount=rdao.foodCount(list.get(i).getFidx());
+			reviewcnts.add(reviewCount);
+		}
+
+		System.out.println(reviewcnts);
+		request.setAttribute("reviewcnts",reviewcnts);
+		
+		
 		
 		System.out.println(list);
 		request.setAttribute("pageDto", pageDto);

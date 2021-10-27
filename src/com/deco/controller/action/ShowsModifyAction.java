@@ -56,9 +56,11 @@ public class ShowsModifyAction implements Action {
 		String closetime= multi_request.getParameter("closetime");
 		String addr= multi_request.getParameter("addr");
 		String phone= multi_request.getParameter("phone");
-		String outimage = multi_request.getFilesystemName("outimage");		
-		String inimage = multi_request.getFilesystemName("inimage");
-		
+		String outimage = multi_request.getParameter("outimage");		
+		String inimage = multi_request.getParameter("inimage");
+		String link = multi_request.getParameter("link");
+
+		System.out.println(link);
 		
 		Shows dto = new Shows();
 		dto.setSidx(idx);
@@ -73,7 +75,7 @@ public class ShowsModifyAction implements Action {
 		dto.setPhone(phone);
 		dto.setOutimage(outimage);
 		dto.setInimage(inimage);
-		
+		dto.setLink(link);
 		
 		ShowsDao dao = ShowsDao.getInstance();
 		dao.update(dto);

@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.deco.dao.CafeDao;
 import com.deco.dao.FoodDao;
-import com.deco.dto.Cafe;
 import com.deco.dto.Food;
 import com.deco.dto.SessionDto;
 import com.oreilly.servlet.MultipartRequest;

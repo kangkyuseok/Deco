@@ -64,7 +64,7 @@
   <div class="decoJoinLogo">DECO</div>
     <ul class="joinContens">
       <li class="joinEmail">
-        <div class="joinTitle">이메일(ID)</div>
+        <div class="joinTitle">이메일(ID)*</div>
         <div class="joinEmailSelect">
           <input type="text" name="str_email01" id="str_email01" style="width:100px" class="joinInput"> 
           <div class="gol">@</div> 
@@ -89,20 +89,20 @@
       </li>
       
       <li>
-        <div class="joinTitle">비밀번호</div>
+        <div class="joinTitle">비밀번호*</div>
         <input type="password" name="password" placeholder="비밀번호" class="joinInput">
       </li>
       <li>
-        <div class="joinTitle">비밀번호 확인</div>
+        <div class="joinTitle">비밀번호 확인*</div>
         <input type="password" name="password1" placeholder="비밀번호 확인" class="joinInput">
       </li>
       <li>
-        <div class="joinTitle">이름</div>
+        <div class="joinTitle">이름*</div>
         <input type="text" name="name" placeholder="이름" class="joinInput">
       </li>
       <li class="joinGenderAge">
         <div class="gender">
-          <div class="joinTitle">성별</div>
+          <div class="joinTitle">성별*</div>
           <div class="genderInput">
             <input type="radio" value="남" name="gender" id="male">
             <label for="male">남자</label>
@@ -111,24 +111,24 @@
           </div>
         </div>
         <div class="age">
-          <div class="joinTitle">나이</div>
+          <div class="joinTitle">나이*</div>
           <input type="number" name="age" min="10" max="99" class="joinInput"
 						value="30">
         </div>
       </li>
       <li>
-        <div class="joinTitle">전화번호</div>
+        <div class="joinTitle">전화번호*</div>
         <input type="text" name="phone" placeholder="전화번호를 입력하세요" class="joinInput">
       </li>
       <li class="joinAddrLi">
-        <div class="joinTitle">주소</div>
+        <div class="joinTitle">주소*</div>
         <div class="joinAddr">
           <input name="addr" type="button" id="member_post" value="주소찾기" onclick="findAddr()" >
           <input name="addr" id="member_addr" class="joinInput">
       </div>
       </li>
       <li>
-        <div class="joinTitle">닉네임</div>
+        <div class="joinTitle">닉네임*</div>
         <input type="text" name="nickname" placeholder="닉네임을 입력하세요" class="joinInput">
       </li>
       <li>
