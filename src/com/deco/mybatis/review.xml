@@ -28,6 +28,11 @@
 		delete from review where idx=#{idx}
 	</delete>
 	
+	<select id="cafeCount"  resultType="int" parameterType="int">
+    select count(*) from review where refidx=#{refidx}     
+   </select>
+	
+	
 </mapper>
 
 <!-- useGeneratedKeys="true"

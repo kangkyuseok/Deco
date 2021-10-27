@@ -8,7 +8,6 @@
 <title>DECO 당신의 하루를 꾸미다.</title>
 </head>
 <body>
-<%@ include file="top.jsp" %>
   <h1>DECO</h1>
   <form action="login.deco" method="post">
     <label for="">아이디 : </label>
@@ -18,7 +17,7 @@
     <input type="submit" value="login">
   </form>
     <div>아직 회원이 아니신가요?</div>
-    <a href="#" onClick="window.open('http://localhost:8087/deco/password.deco','회원찾기','width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes');return false;">회원찾기</a> 
+    <a href="password.deco">회원 찾기</a>     <!-- onClick="window.open('http://localhost:8087/deco/password.deco','회원찾기','width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes');return false;">회원찾기</a> --> 
     <a href="join.deco">회원가입</a>
    <hr>
     <h5>오늘의 카페 추천</h5>
@@ -34,6 +33,5 @@
        <li> <img alt="cafe-out" src="/image/${vo.outimage}" width="150px" height="150px"></li>
     </ul>
     </c:forEach>
-<%@ include file="bottom.jsp" %>
 </body>
 </html>

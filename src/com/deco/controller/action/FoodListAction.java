@@ -65,6 +65,7 @@ public class FoodListAction implements Action {
 			list = dao.getLocation(map);
 		}
 		
+		System.out.println(list);
 		request.setAttribute("pageDto", pageDto);
 		request.setAttribute("foodList", list);
 		forward.isRedirect = false;

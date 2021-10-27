@@ -63,4 +63,15 @@ public class ReviewDao {
 		mapper.commit();
 		mapper.close();
 	}
+	
+	
+	
+	
+	public int cafeCount(int refidx) {
+	      SqlSession mapper = factory.openSession();
+	      int cnt = mapper.selectOne("review.cafeCount",refidx);  //여기문제인데요.
+	      mapper.close();     
+	      return cnt;
+	   }
+	
 }
