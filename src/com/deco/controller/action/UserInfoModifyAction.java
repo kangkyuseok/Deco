@@ -1,19 +1,15 @@
 package com.deco.controller.action;
 
-import java.io.IOException;
+import java.io.IOException; 
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.deco.dao.CafeDao;
 import com.deco.dao.UsersDao;
-import com.deco.dto.Cafe;
 import com.deco.dto.SessionDto;
 import com.deco.dto.Users;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class UserInfoModifyAction implements Action {
 	@Override
@@ -22,79 +18,39 @@ public class UserInfoModifyAction implements Action {
 		
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-	    SessionDto sdto = (SessionDto)session.getAttribute("user");
-	    
+		ActionForward forward = new ActionForward();
+		SessionDto sdto = (SessionDto)session.getAttribute("user");
+		if(sdto==null) {
+			request.setAttribute("message", "세션이 만료되었습니다. 로그인 화면으로 이동합니다.");
+			request.setAttribute("url", "home_login.deco");
+			forward.isRedirect = false;
+			forward.url="error/alert.jsp";
+			return forward;
+		}
+		
 	      
 	    UsersDao dao = UsersDao.getInstance();
-
-	      String name = request.getParameter("name");
-			
-			String email = request.getParameter("email");
-			String gender = request.getParameter("gender");
-			int age = Integer.parseInt(request.getParameter("age"));
-			String phone = request.getParameter("phone");
-			String addr = request.getParameter("addr");
-			//String nickname = request.getParameter("nickname");
-			
-			Users dto = new Users();
-			
-			dto.setName(name);
-			dto.setEmail(email);
-			dto.setGender(gender);
-			dto.setAge(age);
-			dto.setPhone(phone);
-			dto.setAddr(addr);
-			//dto.setNickname(nickname);	
-	      	
-	      	//user = sdto.getIdx();
-		
-		System.out.println(dto);
-	
-	    dao.update(dto);
-	    ActionForward forward = new ActionForward();
-		forward.isRedirect = false;
-		forward.url="home.jsp";
-		return forward;
-	}
-}
-		
-		
-		
-		
-		
-		
-		
-		/*
-		request.setCharacterEncoding("UTF-8");
-		
-		String name = request.getParameter("name");
-		String password = request.getParameter("password");
-		String email = request.getParameter("email");
-		String gender = request.getParameter("gender");
+	    	
+    	int idx = Integer.parseInt(request.getParameter("idx"));
 		int age = Integer.parseInt(request.getParameter("age"));
 		String phone = request.getParameter("phone");
 		String addr = request.getParameter("addr");
-		String nickname = request.getParameter("nickname");
 		
 		Users dto = new Users();
 		
-		dto.setName(name);
-		dto.setPassword(password);
-		dto.setEmail(email);
-		dto.setGender(gender);
+		dto.setIdx(idx);
 		dto.setAge(age);
 		dto.setPhone(phone);
 		dto.setAddr(addr);
-		dto.setNickname(nickname);
-		
-		UsersDao dao = UsersDao.getInstance();
-		dao.update(dto);
-
-		ActionForward foward =new ActionForward();
-		foward.isRedirect = true;
-		foward.url="home.jsp";
-		return foward;
-		
+	      	
+	    dao.update(dto);		// 수정 메소드
+	    
+	    //알람뜨기
+	    request.setAttribute("message", "회원정보 수정이 완료되었습니다.");
+	    request.setAttribute("url", "userInfo.deco");
+	    
+		forward.isRedirect = false;
+		forward.url="error/alert.jsp";
+		return forward;
 	}
-
-} */
+}

@@ -18,19 +18,21 @@ public class CafeInsertAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8"); 
 		
 		ActionForward forward = new ActionForward();
-		HttpSession session = request.getSession();	
+
+		HttpSession session = request.getSession();
 		SessionDto sdto = (SessionDto)session.getAttribute("user");
 		if(sdto==null) {
-			request.setAttribute("message", "세션이 만료되었습니다, 로그인화면으로 이동합니다.");
+			request.setAttribute("message", "세션이 만료되었습니다. 로그인 화면으로 이동합니다.");
 			request.setAttribute("url", "home_login.deco");
 			forward.isRedirect = false;
 			forward.url="error/alert.jsp";
 			return forward;
-		}	
+		}
 		
+		
+		request.setCharacterEncoding("UTF-8"); 
 		
 		CafeDao dao= CafeDao.getInstance();
 		String path="c:\\upload/cafe";
@@ -72,11 +74,10 @@ public class CafeInsertAction implements Action {
 	   }catch (Exception e) {
 		   e.printStackTrace();
 	}
-	  
-	   ActionForward foward = new ActionForward();
-		foward.isRedirect = false;
-		foward.url="list.deco";
-		return foward;
+		
+		forward.isRedirect = false;
+		forward.url="home.deco";
+		return forward;
 	}
 
 }

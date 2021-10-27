@@ -1,20 +1,15 @@
 package com.deco.controller.action;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;  
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.deco.dao.UsersDao;
-import com.deco.dto.SessionDto;
 import com.deco.dto.Users;
 
-public class MemberAction implements Action {
+public class JoinAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -26,7 +21,7 @@ public class MemberAction implements Action {
 		String password = request.getParameter("password");
 		String str_email01 = request.getParameter("str_email01");
 		String str_email02 = request.getParameter("str_email02");
-		String email = str_email01+"@"+str_email02;
+		String email = str_email01+"@"+str_email02;		
 		String gender = request.getParameter("gender");
 		int age = Integer.parseInt(request.getParameter("age"));
 		String phone = request.getParameter("phone");
@@ -47,9 +42,11 @@ public class MemberAction implements Action {
 		
 		UsersDao dao = UsersDao.getInstance();
 		dao.insert(dto);
+		dao.dibsinsert(nickname);
+		
 		ActionForward forward = new ActionForward();
 		forward.isRedirect = false;
-		forward.url="./";
+		forward.url="home_login.deco";
 		return forward;
 	}
 }

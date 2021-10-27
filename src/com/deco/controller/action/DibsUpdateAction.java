@@ -22,15 +22,24 @@ public class DibsUpdateAction implements Action {
 			throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
+
+		HttpSession session = request.getSession();
+		SessionDto sdto = (SessionDto)session.getAttribute("user");
+		if(sdto==null) {
+			request.setAttribute("message", "세션이 만료되었습니다. 로그인 화면으로 이동합니다.");
+			request.setAttribute("url", "home_login.deco");
+			forward.isRedirect = false;
+			forward.url="error/alert.jsp";
+			return forward;
+		}
+		
 		DibsDao dibsdao = DibsDao.getInstance();
-		int refidx = Integer.parseInt(request.getParameter("refidx"));
+		int refidx = Integer.parseInt(request.getParameter("idx"));
 		Map<String,String> map = new HashMap<String,String>();
 		
 		String message=null,url=null;
 		
 		// dibCafe 가져오기
-		HttpSession session = request.getSession();
-		SessionDto sdto = (SessionDto)session.getAttribute("user");	// 세션에서 user 정보
 		String nickname = sdto.getNickname();	// user 에서 닉네임
 		Dibs dibs = dibsdao.getDibs(nickname);	// 닉네임으로 dibs 정보
 		String dibCafe = dibs.getDibCafe();	// 요것이 dibCafe 컬럼

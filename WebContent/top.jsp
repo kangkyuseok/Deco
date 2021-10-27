@@ -4,27 +4,26 @@
 <!DOCTYPE html>
 <html>
 <head>
- <style>
-  }
- ul > h1{
-   text-align: left;
-  }
-  
-  </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/flexbox2.css?v=3">
+<link rel="stylesheet" href="css/flexbox2.css?v=3">
 </head>
 <body>
 <div>
+	<a href="home.deco"><img alt="deco" src="img/deco.png" style="width=100px; height=100px;"></a>
+	<a href="home.deco"><h1 style="display:inline; font-size:100px;">DECO</h1></a>
+</div>
+<div>
 <ul class = "container">
-<h2><a  href="home.jsp">DECO</a></h2>
-<li><a class="menu" href="list.deco">cafelist</a></li>
-<li><a class="menu" href="logout.deco">logout</a></li>
+<li><a class="menu" href="cafeList.deco">cafelist</a></li>
+<li><a class="menu" href="foodList.deco">foodlist</a></li>
+<li><a class="menu" href="showsList.deco">showlist</a></li>
+<li><a class="menu" href="etcList.deco">etclist</a></li>
+<li><a class="menu" href="insertButton.deco">업체등록</a></li>
  
         <li id="logintest">
         <c:if test="${sessionScope.user == null}">
-	<a href="login.deco">로그인</a>
+	<a href="home_login.deco">로그인</a>
 	</c:if>
 	<c:if test="${sessionScope.user != null}">
 	<!-- 로그인 된 상태 -->

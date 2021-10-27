@@ -12,9 +12,8 @@
 <body>
 <div>
 <ul class = "container">
-<h2><a  href="home.jsp">DECO</a></h2>
-<li><a class="menu" href="list.deco">cafelist</a></li>
-<li><a class="menu" href="logoutAction.deco">logout</a></li>
+<h2><a  href="">나의 ID   PASSWARD 찾기</a></h2>
+
  <%-- 
         <li id="logintest">
         <c:if test="${sessionScope.user == null}">

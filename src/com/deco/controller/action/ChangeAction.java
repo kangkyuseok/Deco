@@ -1,7 +1,6 @@
 package com.deco.controller.action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,28 +13,31 @@ import com.deco.dao.UsersDao;
 import com.deco.dto.SessionDto;
 import com.deco.dto.Users;
 
-public class deleteAction implements Action {
+public class ChangeAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
-		
-		  HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
+		Map<String, String> map = new HashMap<String, String>();
 	      UsersDao dao = UsersDao.getInstance();
-	      SessionDto sdto = (SessionDto)session.getAttribute("user");
-	      ActionForward forward = new ActionForward();
+	      
+	      Users user = new Users();
+	      
+	      Users dto = new Users();
+	      
+	      
+	      
+	      //dto = dao.getUser2(user);
 	     
-	      	int idx = sdto.getIdx();
-	  		dao.delete(idx);
- 		
-	      System.out.println(idx);
-	
-	      request.setAttribute("message", "회원탈퇴 되셨습니다 홈으로 이동합니다.");
-	      request.setAttribute("url","./" );
-		forward.isRedirect = false;
-		forward.url="error/alert.jsp";
-		return forward;
+
+	      dto = dao.getUser2(user);
+	      System.out.println(dto);
+	      request.setAttribute("dto", user);
+	      ActionForward forward = new ActionForward();
+	      forward.isRedirect = false;
+	      forward.url="deco/home_login.deco";
+	      return forward;   
+	   }
 	}
-}

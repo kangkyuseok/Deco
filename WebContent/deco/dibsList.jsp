@@ -9,23 +9,8 @@
 </head>
 <body>
 <%@ include file="../top.jsp" %>
-	<div>
-		<%-- <c:if test="${sessionScope.user != null }">
-			<!-- 로그인된 상태 -->
-			<br>${user.name }(${user.email })  님 반갑습니다. <br>
-			<a href="logout.deco" class="menu">로그아웃</a>
-			<a href="" >마이페이지</a>
-		</c:if> --%>
-		<h1>찜목록</h1>
-	</div>
-	<div>
-		<ul>
-			<li><a>카페</a></li>
-			<li><a>맛집</a></li>
-			<li><a>공연/전시</a></li>
-			<li><a>체험/이색데이트</a></li>
-		</ul>
-	</div>
+<section>
+	
 	<div>
 		<c:forEach var="vo" items="${dibsCafe}">
 			<ul>
@@ -41,6 +26,11 @@
 		    </ul>
 		</c:forEach>
 	</div>
-	
+</section>
+<%@ include file="../bottom.jsp" %>	
 </body>
 </html>
+
+
+
+

@@ -33,11 +33,38 @@ public class DibsDao {
 		mapper.close();
 		return cafe;
 	}
+	
 	public void updateCafeDibs(Map<String,String> map) {
 		SqlSession mapper = factory.openSession();
 		mapper.update("updateCafeDibs", map);
 		mapper.commit();
 		mapper.close();
 	}
+	public void updateFoodDibs(Map<String,String> map) {
+		SqlSession mapper = factory.openSession();
+		mapper.update("updateFoodDibs", map);
+		mapper.commit();
+		mapper.close();
+	}
+	public void updateShowsDibs(Map<String,String> map) {
+		SqlSession mapper = factory.openSession();
+		mapper.update("updateShowsDibs", map);
+		mapper.commit();
+		mapper.close();
+	}
+	public void updateEtcDibs(Map<String,String> map) {
+		SqlSession mapper = factory.openSession();
+		mapper.update("updateEtcDibs", map);
+		mapper.commit();
+		mapper.close();
+	}
+	public void delete(String nickname) {
+		SqlSession mapper = factory.openSession();
+		mapper.delete("dibsDelete", nickname);
+		mapper.commit();
+		mapper.close();
+	}
+	
+	
 	
 }

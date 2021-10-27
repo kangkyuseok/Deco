@@ -20,20 +20,20 @@ public class DibsListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		ActionForward forward = new ActionForward();
-		// 사용자 닉네임 이전 페이지에서 session으로 값 받아 넘겨주기 // request.getParameter로 받기
+
 		HttpSession session = request.getSession();
 		SessionDto user = (SessionDto)session.getAttribute("user");
-		SessionDto sdto = (SessionDto)session.getAttribute("user");
-		if(sdto==null) {
-			request.setAttribute("message", "세션이 만료되었습니다, 로그인화면으로 이동합니다.");
+		if(user==null) {
+			request.setAttribute("message", "세션이 만료되었습니다. 로그인 화면으로 이동합니다.");
 			request.setAttribute("url", "home_login.deco");
 			forward.isRedirect = false;
 			forward.url="error/alert.jsp";
 			return forward;
 		}
-		//String nickname = request.getParameter("nickname");
-	
+		
+		// 사용자 닉네임 이전 페이지에서 session으로 값 받아 넘겨주기 // request.getParameter로 받기
 		String nickname = user.getNickname();
 		
 		DibsDao dao = DibsDao.getInstance();
@@ -50,7 +50,6 @@ public class DibsListAction implements Action {
 		
 		request.setAttribute("dibsCafe", listCafe);
 		
-	
 		forward.isRedirect=false;
 		forward.url="deco/dibsList.jsp";
 		return forward;

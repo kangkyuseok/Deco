@@ -16,18 +16,20 @@ public class CafeUpdateAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");	
-		ActionForward forward =new ActionForward();
-		HttpSession session = request.getSession();	
+		
+		ActionForward forward = new ActionForward();
+
+		HttpSession session = request.getSession();
 		SessionDto sdto = (SessionDto)session.getAttribute("user");
 		if(sdto==null) {
-			request.setAttribute("message", "세션이 만료되었습니다, 로그인화면으로 이동합니다.");
+			request.setAttribute("message", "세션이 만료되었습니다. 로그인 화면으로 이동합니다.");
 			request.setAttribute("url", "home_login.deco");
 			forward.isRedirect = false;
 			forward.url="error/alert.jsp";
 			return forward;
 		}
 		
+		request.setCharacterEncoding("UTF-8");	
 		
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		int pageNo =  Integer.parseInt(request.getParameter("page"));
@@ -38,14 +40,6 @@ public class CafeUpdateAction implements Action {
 		System.out.println(dto);
 		request.setAttribute("cafe", dto);
 		request.setAttribute("page", pageNo);
-		
-		
-		
-		
-	// session 객체 생성
-		
-		
-		
 		
 		
 		forward.isRedirect = false;

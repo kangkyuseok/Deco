@@ -22,21 +22,22 @@ public class CafeAction implements Action {
 		CafeDao dao= CafeDao.getInstance();
 		int pageNo;
 		
-		
 		HttpSession session = request.getSession();
-		ActionForward forward =new ActionForward();
-		SessionDto sdto = (SessionDto)session.getAttribute("user");
-		if(sdto==null) {
-			request.setAttribute("message", "세션이 만료되었습니다, 로그인화면으로 이동합니다.");
-			request.setAttribute("url", "home_login.deco");
-			forward.isRedirect = false;
-			forward.url="error/alert.jsp";
-			return forward;
-		}	
+	    ActionForward forward =new ActionForward();
+	    SessionDto sdto = (SessionDto)session.getAttribute("user");
+	    if(sdto==null) {
+	       request.setAttribute("message", "세션이 만료되었습니다, 로그인화면으로 이동합니다.");
+	       request.setAttribute("url", "home_login.deco");
+	       forward.isRedirect = false;
+	       forward.url="error/alert.jsp";
+	       return forward;
+	    }
+		
+	
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		
 		if(request.getParameter("page")==null) pageNo=1;
-		else pageNo = Integer.parseInt(request.getParameter("page"));
+	      else pageNo = Integer.parseInt(request.getParameter("page"));
 		
 		Cafe ca=dao.getOne(idx);
 
@@ -44,13 +45,12 @@ public class CafeAction implements Action {
 		List<Review> reList = rdao.getReview(idx);
 		request.setAttribute("review", reList);
 		
-		request.setAttribute("cafe", ca); 
-		request.setAttribute("page", pageNo);   
+		request.setAttribute("cafe", ca);    
+		request.setAttribute("page", pageNo);
 		
-		ActionForward foward =new ActionForward();
-		foward.isRedirect = false;
-		foward.url="deco/cafe.jsp";
-		return foward;
+		forward.isRedirect = false;
+		forward.url="deco/cafe.jsp";
+		return forward;
 	}
 
 }

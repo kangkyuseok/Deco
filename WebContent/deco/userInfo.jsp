@@ -7,38 +7,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>deco :: 회원정보</title>
+<title>::deco::회원정보</title>
 <!-- 스타일 참고  -->
 <link rel="stylesheet" href="">
 </head>
 <body>
-<!--<c:if test="${alert!=null }">
-	<script type="text/javascript">
-		alert('회원 정보가 수정되었습니다.');
-	</script>
-</c:if>
--->
+<%@ include file="../top.jsp" %>
+<section>
 	<div style="width: 70%; margin: auto;">
 		<h3>Deco :: 회원정보</h3>  <!-- 이메일 , 지역 -->
 			<table>
 				<tr>
 					<td>닉네임</td>
-					<td type="readonly">${dto.nickname }</td>   	<!-- 닉네임은 변경할수 없고 읽기만 -->
+					<td>${dto.nickname }</td>   	<!-- 닉네임은 변경할수 없고 읽기만 -->
 				</tr>
 				<tr>
 					<td>이름</td>
 				
-					<td type="readonly">${dto.name }</td>   	<!-- 이름은 변경할수 없고 읽기만 -->
+					<td>${dto.name }</td>   	<!-- 이름은 변경할수 없고 읽기만 -->
 				</tr>
 				<tr>
 					<td>이메일</td>
 					<td>${dto.email }</td>
 				</tr>
 					<!-- value는 기본값. type="number" 일 때는 min,max 속성 설정 가능.-->
-				</tr>
+				<tr>
 				    <td>성별</td>
 					<td>${dto.gender }</td>
-					<tr>
+					
 					<td>나이</td>
 					<td>${dto.age }</td>
 					<!-- value는 기본값. type="number" 일 때는 min,max 속성 설정 가능.-->
@@ -58,5 +54,7 @@
 				</tr>
 			</table>
 	</div>
+</section>
+<%@ include file="../bottom.jsp" %>
 </body>
 </html>

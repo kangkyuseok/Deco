@@ -4,18 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>deco ::마이페이지</title>
+<title>::deco::마이페이지</title>
 </head>
 <body>
-<hr><form action="deleteAction.deco" name="frmReg" method="post">
+<%@ include file="../top.jsp" %>
+<section>
+<hr>
+<h1>마이페이지</h1>
 <input type="button" value="회원정보" onclick = "location.href='userInfo.deco'">
-<input type="button" value="내가 쓴 찜목록" onclick = "'">
-<input type="button" value="내가 쓴 리뷰목록" onclick = "'">
-<!-- 1:1 문의 빼기 -->
-<button>고객센터</button><br>
-<input type="submit" value="회원탈퇴">
-
-
-</form>
+<input type="button" value="내가 쓴 찜목록" onclick = "location.href='dibsList.deco'">
+<input type="button" value="내가 쓴 리뷰목록" onclick = "location.href='reviewList.deco'">
+<input type="button" value="회원탈퇴" onclick = "location.href='userInfoDelete.deco'">
+</section>
+<hr>
+<%@ include file="../bottom.jsp" %>
 </body>
 </html>

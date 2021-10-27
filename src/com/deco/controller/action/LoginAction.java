@@ -20,12 +20,7 @@ public class LoginAction implements Action {
 		String id = request.getParameter("userId");
 		String password = request.getParameter("password");
 		
-		ActionForward forward = new ActionForward();
-		
 		HttpSession session = request.getSession();		// session 객체 생성
-		
-
-		
 		
 		Map<String,String> map = new HashMap<>();
 		map.put("email", id);
@@ -40,12 +35,13 @@ public class LoginAction implements Action {
 			request.setAttribute("message", "로그인 되었습니다.");
 			request.setAttribute("url", "home.jsp");
 //			pageContext.forward("error/alert.jsp");		//pagecontext.forward 페이지 이동, include 해당페이지 포함.
-		}else{
+		} else{
 			//로그인 정보 불일치
 			request.setAttribute("message", "로그인 정보가 올바르지 않습니다.");
-			request.setAttribute("url", "./");
+			request.setAttribute("url", "home_login.jsp");
 //			pageContext.forward("error/alert.jsp");		//pagecontext.forward 페이지 이동, include 해당페이지 포함.
 		}
+		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setUrl("error/alert.jsp");
 		return forward;

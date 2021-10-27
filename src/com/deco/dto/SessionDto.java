@@ -8,20 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SessionDto {	//로그인한 유저 요약 정보 Users 테이블 참조ㄴ
-	//private int idx;
-	//private String name;
-	//private String nickname;
-	//private String email;
-	//private String addr;
-	//private int age;
-	
 	private int idx;
 	private String name;
-	private String password;
-	private String email;
-	private String gender;
-	private int age;
-	private String phone;
-	private String addr;
 	private String nickname;
+	private String email;
+	private String addr;
+	private int age;
 }

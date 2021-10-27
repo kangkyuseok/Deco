@@ -18,15 +18,6 @@ public class ReviewDao {
 	
 	SqlSessionFactory factory = SqlSessionBean.getSessionFactory();
 	
-	public List<Review> getReview(int refidx){   
-		//key(변수명처럼 이해) String, value  는 int
-		List<Review> list = null;
-		SqlSession mapper = factory.openSession();
-		list = mapper.selectList("review.getReview",refidx);
-		mapper.close();
-		return list;
-		}
-	
 	public List<Review> getList() {
 		List<Review> list = null;
 		SqlSession mapper = factory.openSession();
@@ -34,7 +25,24 @@ public class ReviewDao {
 		mapper.close();
 		return list;
 	}
-
+	
+	public List<Review> getReview(int refidx){   
+		//key(변수명처럼 이해) String, value  는 int
+		List<Review> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("review.getReview",refidx);
+		mapper.close();
+		return list;
+	}
+	public List<Review> reviewList(String nickname){   
+		//key(변수명처럼 이해) String, value  는 int
+		List<Review> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("review.reviewList",nickname);
+		mapper.close();
+		return list;
+	}
+	
 	public Cafe getOne(int idx) {
 		SqlSession mapper = factory.openSession();
 		Cafe dto= mapper.selectOne("review.getOne",idx);
@@ -48,13 +56,11 @@ public class ReviewDao {
 		mapper.commit();
 		mapper.close();
 	}
+	
 	public void delete(int idx) {
 		SqlSession mapper = factory.openSession();
 		mapper.delete("review.delete",idx);
 		mapper.commit();
 		mapper.close();
 	}
-	
-	
-	
 }

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>deco :: 회원정보</title>
+<title>::deco::회원정보</title>
 <!-- 스타일 참고  -->
 <link rel="stylesheet" href="">
 <script>
@@ -71,7 +71,7 @@
 -->
 	<div style="width: 70%; margin: auto;">
 		<h3>Deco :: 회원정보</h3>  <!-- 이메일 , 지역 -->
-		<form action="UserInfoModifyAction.deco" name="frmReg" method="post" > 
+		<form action="userInfoModify.deco" name="frmReg" method="post" > 
 			<input type="hidden" name="idx" value="${dto.idx }" >  
 			<!--브라우저에 출력은 안되고 파라미터로 필요한값은 type을 hidden으로 한다. -->
 			<table>
@@ -92,30 +92,30 @@
 				<tr>
 
 					<td><label>이메일</label></td>
-					<td><input type="email" name="email" value="${user.email }"readonly></td>
+					<td><input type="email" name="email" value="${dto.email }"readonly></td>
 				</tr>
 					<!-- value는 기본값. type="number" 일 때는 min,max 속성 설정 가능.-->
 				<tr>
 				    <td><label>성별</label></td>
-					<td><input type="text" value="${user.gender }" name="gender" readonly>
+					<td><input type="text" value="${dto.gender }" name="gender" readonly>
 						
 					</td>
 					</tr>
 					<tr>
 					<td><label>나이</label></td>
 					<td><input type="number" name="age" min="10" max="99"
-						value="${user.age }"></td>
+						value="${dto.age }"></td>
 					<!-- value는 기본값. type="number" 일 때는 min,max 속성 설정 가능.-->
 				</tr>
 				<tr>
 					<td><label>전화번호</label></td>
-					<td><input type="text" name="phone" placeholder="전화번호을 입력하세요" value="${user.phone }"></td>
+					<td><input type="text" name="phone" placeholder="전화번호을 입력하세요" value="${dto.phone }"></td>
 				</tr>
 				<tr>
 					<td><label>주소</label></td>
 					<td>
 					<input name="addr" type="button" id="member_post" value="주소찾기" onclick="findAddr()">
- 							<input name="addr" id="member_addr" value="${user.addr }">
+ 							<input name="addr" id="member_addr" value="${dto.addr }">
 					
 					</td>
 				
@@ -130,24 +130,6 @@
 			</table>
 		</form>
 	</div>
-	<script type="text/javascript">
-	document.getElementById("addr_select").addEventListener("change",function(){
-		if(this.value=="기타"){  //this는 getElementById("addr_select") 요소
-//			document.getElementById("addr_id").style.display="inline-block";   //화면에 보임
-			document.frmReg.addr_etc.disabled=false;
-		}else {
-//			document.getElementById("addr_id").style.display="none";		//화면에  안보임.
-			document.frmReg.addr_etc.disabled=true;
-		}
-		
-	});
-	
-	/* 표현식으로 자바의 변수값을 가져오기. cus객체의 addr프로퍼티 (get메소드를 통해서 가져옵니다.)*/
-	document.querySelectorAll("option").forEach( item => {
-		if(item.value===`${cus.addr}`) item.selected=true;   
-	});
-	
-	</script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>
 </html>

@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 </head>
-<title>deco ::리뷰목록</title>
+<title>::deco::리뷰목록</title>
 <body>
-<div>
-</div>
+<%@ include file="../top.jsp" %>
+<section>
 	<div>
 	<form action="review.deco" method="get">
 	<h3>리뷰리스트</h3>
@@ -18,11 +18,15 @@
 		<li>${vo.nickname }</li>
 		<li>${vo.content }</li>
 		<li>${vo.grade }</li>
-				<li>${vo.category }</li>
-		<li> <a href="cafe.deco?idx=${vo.refidx}">글 보러 가기 </a> </li>
+		<li>${vo.category }</li>
+		<li><img alt="cafe-out" src="/reviewimage/${vo.imgfile}" width="150px" height="150px"></li>
+		
+		<li> <a href ="cafe.deco?idx=${vo.refidx}">글 보러가기</a> </li>
 	</ul>
 	</c:forEach>
 	</form>
 	</div>
+</section>
+<%@ include file="../bottom.jsp" %>
 </body>
 </html>
