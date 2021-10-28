@@ -7,6 +7,10 @@
   	<select id="getList" resultType="Review" parameterType="double">
 		select * from review order by grade desc
 	</select>
+
+  	<select id="getList10" resultType="Review" parameterType="java.util.Map">
+		select * from review order by grade desc limit #{startNo},#{pageSize}
+	</select>
 	
 	<select id="getOne" resultType="Review" parameterType="int">
  		select * from review where idx=#{idx}
@@ -51,6 +55,12 @@
 		delete from review where idx=#{idx}
 	</delete>
 	
+	
+	<!-- 개인 리뷰 가져오기 닉네임으로 -->
+	<select id="getCount"  resultType="int" parameterType="String">
+	 select count(*) from review where nickname=#{nickname}     
+	</select>
+
 	<select id="cafeCount"  resultType="int" parameterType="int">
 	 select count(*) from review where refidx=#{refidx}     
 	</select>

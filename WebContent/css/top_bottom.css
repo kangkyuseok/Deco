@@ -75,6 +75,7 @@ a {
 
 .footer {
   background-color: var(--black-color);
+  width:100%;
 }
 
 .footerTitle,

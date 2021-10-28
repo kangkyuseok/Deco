@@ -49,7 +49,7 @@ public class IdAction implements Action {
 			String email = dto.getEmail();
 			System.out.println(email);
 			request.setAttribute("message","회원님의 이메일은"+ email + "입니다.");
-			request.setAttribute("url", "password.deco");
+			request.setAttribute("url", "./");
 			forward.isRedirect = false;
 			forward.url="error/alert.jsp";
 			return forward;

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>DECO 당신의 하루를 꾸미다</title>
+<%@ include file="../top.jsp" %>
 <link rel="stylesheet" href="css/cafeList.css">
 <script src="https://kit.fontawesome.com/96c30f85d8.js"
 	crossorigin="anonymous"></script>
@@ -140,6 +141,7 @@
   }
   
   </script>
+  <%@ include file="../bottom.jsp" %>
 </body>
 </html>
 

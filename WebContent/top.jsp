@@ -19,6 +19,10 @@
       <li><a href="best.deco">Hot Place</a></li>
       <li><a href="mypage.deco">My Page</a></li>
       <li><a href="">About Us</a></li>
+      <li><a href="cafeInsert.deco">inset카페</a></li>
+      <li><a href="foodInsert.deco">inset식당</a></li>
+      <li><a href="showsInsert.deco">isnet공연</a></li>
+      <li><a href="etcInsert.deco">isnet이색</a></li>
      
     </ul>
     <div class="nickname">

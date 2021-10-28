@@ -27,12 +27,12 @@
         <div class="detailText">${shows.content}</div>
       </li>
       <li class="detailImg">
-        <div class="outImg">
+       <%--  <div class="outImg">
           <div class="detailName"><외부 사진></div>
           <img src="/simage/${shows.inimage}" alt="etc_in">
-        </div>
+        </div> --%>
         <div class="inImg">
-          <div class="detailName"><내부 사진></div>
+          <div class="detailName">포스터</div>
           <img src="/simage/${shows.outimage}" alt="etc_out">
         </div>
         
@@ -74,7 +74,9 @@
 
 
 <div>
-   <input type="submit" value="수정" class="button small">
+	<c:if test="${user.nickname eq frontman}">
+   		<input type="submit" value="수정" class="button small">
+	</c:if>
    <input type="button" onclick="location.href='showsList.deco?page=${page}'" value="리스트" class="button small">
 </div>
 </form>

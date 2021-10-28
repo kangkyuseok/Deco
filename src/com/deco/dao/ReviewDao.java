@@ -1,6 +1,7 @@
 package com.deco.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -22,6 +23,14 @@ public class ReviewDao {
 		List<Review> list = null;
 		SqlSession mapper = factory.openSession();
 		list = mapper.selectList("review.getList");
+		mapper.close();
+		return list;
+	}
+
+	public List<Review> getList10(Map<String, Integer> map) {
+		List<Review> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("review.getList10", map);
 		mapper.close();
 		return list;
 	}
@@ -109,6 +118,13 @@ public class ReviewDao {
 	
 	
 	
+	public int getCount(String nickname) {
+		SqlSession mapper = factory.openSession();
+		int cnt = mapper.selectOne("review.getCount",nickname);  //여기문제인데요.
+		mapper.close();     
+		return cnt;
+	}
+
 	public int cafeCount(int refidx) {
 		SqlSession mapper = factory.openSession();
 		int cnt = mapper.selectOne("review.cafeCount",refidx);  //여기문제인데요.

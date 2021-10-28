@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>::deco::cafe</title>
+<%@ include file="../top.jsp" %>
 <link rel="stylesheet" href="css/cafe.css">
   <script src="https://kit.fontawesome.com/96c30f85d8.js" crossorigin="anonymous"></script>
 </head>
@@ -103,7 +104,7 @@
           <div class="makeReviewGrade">
             <div>평점</div>
             <div> 
-              <input type="number" name="grade"class="gradeInput" max="5" min ="1" > 
+              <input type="number" name="grade"class="gradeInput" max="5" min ="1" value="5" > 
             </div>
           </div>
           <div class="makeReviewChooseImg">
@@ -214,4 +215,5 @@ geocoder.addressSearch('${cafe.addr}', function(result, status) {
 <!-- enctype="multipart/form-data" -->
 
 </body>
+<%@ include file="../bottom.jsp" %>
 </html>
