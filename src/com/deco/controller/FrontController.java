@@ -41,6 +41,7 @@ import com.deco.controller.action.JoinAction;
 import com.deco.controller.action.LoginAction;
 import com.deco.controller.action.LogoutAction;
 import com.deco.controller.action.PassWordAction;
+import com.deco.controller.action.PassWordAction2;
 import com.deco.controller.action.ReviewInsertAction;
 import com.deco.controller.action.ReviewListAction;
 import com.deco.controller.action.ShowsAction;
@@ -172,7 +173,7 @@ public class FrontController extends HttpServlet {
 	      }else if(spath.contentEquals("/foodModify.deco")){	//식당 정보 수정하고 다시 food.jsp로
 			Action action = new FoodModifyAction();
 			forward = action.execute(request, response);
-		  }else if(spath.contentEquals("/foodreviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
+		  }else if(spath.contentEquals("/foodReviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
 			Action action = new FoodReviewInsertAction();
 			forward = action.execute(request, response);
 		  }else if(spath.equals("/showsList.deco")) {      // 식당목록 검색
@@ -222,11 +223,16 @@ public class FrontController extends HttpServlet {
 				forward = action.execute(request, response);
 			}else if(spath.equals("/password.deco")) {
 		    	   forward = new ActionForward(false,"deco/password.jsp");
+			}else if(spath.equals("/password2.deco")) {
+		    	   forward = new ActionForward(false,"deco/password2.jsp");
 			}else if(spath.equals("/IdAction.deco")) {
 				Action action = new IdAction();
 				forward = action.execute(request, response);
 			}else if(spath.equals("/PassWordAction.deco")) {
 				Action action = new PassWordAction();
+				forward = action.execute(request, response);
+			}else if(spath.equals("/PassWordAction2.deco")) {
+				Action action = new PassWordAction2();
 				forward = action.execute(request, response);
 			}else if(spath.equals("/change.deco")) {
 				forward = new ActionForward(false,"deco/change.jsp");

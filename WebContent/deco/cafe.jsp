@@ -10,6 +10,7 @@
   <script src="https://kit.fontawesome.com/96c30f85d8.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<section>
 <div class="decoDetail">
     <nav class="category">
       <a href="cafeList.deco">Cafe</a>
@@ -17,7 +18,8 @@
       <a href="showsList.deco">Show</a>
       <a href="etcList.deco">Activity</a>
     </nav>
-
+<form type="hidden" action="cafeUpdate.deco?page=${page}"method="post">
+<input type="hidden" value="${cafe.idx}" name="idx">
  <ul class="detailContents">
       <li class="detailTitle">
         <div class="detailName">${cafe.name}</div>
@@ -66,12 +68,12 @@
 
 
 
-  <section>
 <div>
    <input type="submit" value="수정" class="button small">
-   <input type="button" onclick="location.href='home.jsp'" value="메인화면" class="button small">
-   <input type="button" onclick="location.href='cafeList.deco?page=${page}'" value="리스트" class="button small">
+   <input type="button" onclick="location.href='foodList.deco?page=${page}'" value="리스트" class="button small">
 </div>
+</form>
+<section>
  <form action="dibsUpdate.deco">
     <input type="hidden" name="idx" value="${cafe.idx }">
     <input type="submit" value="찜목록 추가/삭제">
@@ -83,7 +85,7 @@
 
 
 <div class="reviewBar">
-      <div class="reviewCnt">리뷰(3)</div>
+      <div class="reviewCnt">리뷰(${reviewCnt })</div>
       <div class="reviewSubtitle">리뷰 작성</div>
     </div>
     <section class="makeReview">
@@ -114,27 +116,6 @@
       </form>
     </section>
 
- <%-- <section class="reviewLists">
-      <div class="reviewList">
-        <div class="reviewContents">
-          <ul class="reviewNameGrade">
-           
-            <li>${user.nickname}</li>
-            <li>
-              <span>평점</span>
-              <span>4.5</span>
-            </li>
-          </ul>
-          
-          <div class="reviewText">
-            ${re.content}
-          </div>
-        </div>
-        <div>
-          <img class="reviewImg" src="img/연남동_cafe_out_1.png"></img>
-        </div>  
-      </div> --%>
-   
 <section class="reviewLists">
 <c:forEach var="re" items="${review}">
 <div class="reviewList">
@@ -157,7 +138,7 @@
       </div>
    </c:forEach>
       </section> 
-   </div>
+   
 
 
 
@@ -173,8 +154,8 @@
 
  </form>
 </section>
-<hr>
-
+</div>
+</section>
 <script type="text/javascript">
 function deleteCmt(reidx,idx,regrade,page,renickname){
       console.log(reidx);console.log(idx);

@@ -9,7 +9,7 @@
 <!-- 스타일 참고  -->
 <script> 
   function submit2(frm) { 
-    frm.action='PassWordAction.deco'; 
+    frm.action='PassWordAction2.deco'; 
     frm.submit(); 
     return true; 
   } 
@@ -20,11 +20,11 @@
 <section>
 
 <div>
-			<form action="IdAction.deco" name="frmReg" method="post">	
+			<form action="PassWordAction2.deco" name="frmReg" method="post">	
 <table>
 				<tr>
 					<td colspan="2" style="text-align: center">
-					
+					<!-- 
 					<input type="submit" value="아이디 찾기" ><td>
 					<input type="text" name="name" placeholder="이름을 입력하세요" >
 					<input type="number" name="phone" placeholder="전화번호을 입력하세요" ></td>
@@ -32,10 +32,10 @@
 					</tr>
 					</table>
 					</form>
-					</div>
+					</div> -->
 					<!-- <div>
 					<form>
-					<table>
+					<table> -->
 					<tr>
 					<td>
 					<input type='button' value='비밀번호 찾기' onclick='return submit2(this.form);'></td>
@@ -47,7 +47,7 @@
 			</table>
 		</form>
 		
-	</div> -->
+	</div>
 	</section>
 <%@ include file="../bottom.jsp" %>
 </body>

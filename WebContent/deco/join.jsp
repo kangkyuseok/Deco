@@ -31,7 +31,7 @@
        
        //체크한것 이 한개도 없으면 여기와서 실행합니다.
        
-       return false;
+       return true;
     }
     
     function findAddr(){
@@ -55,13 +55,14 @@
                  }
              }
          }).open();
+
      }
-    
  </script>
 </head>
 <body>
-  <form action="joinAction.deco" name="frmReg" method="post" class="decoJoin">
-  <div class="decoJoinLogo">DECO</div>
+  
+  <form action="joinAction.deco" name="frmReg" method="post" class="decoJoin" onsubmit="return validCheck()">
+ <div class="decoJoinLogo"><a href="home_login.deco">DECO</a></div>
     <ul class="joinContens">
       <li class="joinEmail">
         <div class="joinTitle">이메일(ID)*</div>
@@ -135,7 +136,7 @@
         <input type="submit" value="가입하기" class="joinInput submit">
       </li>
     </ul>
-</form>
+</form >
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> <!-- 주소 api -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> 
