@@ -1,15 +1,13 @@
 package com.deco.controller.action;
 
-import java.io.IOException; 
+import java.io.IOException;  
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.deco.dao.CafeDao;
 import com.deco.dao.EtcDao;
-import com.deco.dto.Cafe;
 import com.deco.dto.Etc;
 import com.deco.dto.SessionDto;
 import com.oreilly.servlet.MultipartRequest;
@@ -47,11 +45,12 @@ public class EtcModifyAction implements Action {
 		   	
 		      
 		      String name = multi_request.getParameter("name");
+		      idx=Integer.parseInt(multi_request.getParameter("eidx"));
 				String addr = multi_request.getParameter("addr");
 				String location = multi_request.getParameter("location");
-				String menu1 = multi_request.getParameter("menu");
-				String menu2 = multi_request.getParameter("menu");
-				String menu3 = multi_request.getParameter("menu");
+				String menu1 = multi_request.getParameter("menu1");
+				String menu2 = multi_request.getParameter("menu2");
+				String menu3 = multi_request.getParameter("menu3");
 				String price1 = multi_request.getParameter("price1");
 				String price2 = multi_request.getParameter("price2");
 				String price3 = multi_request.getParameter("price3");

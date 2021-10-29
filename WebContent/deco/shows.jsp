@@ -10,6 +10,7 @@
 </head>
 <title>::deco::cafe</title>
 <link rel="stylesheet" href="css/cafe.css">
+<script src="https://kit.fontawesome.com/96c30f85d8.js" crossorigin="anonymous"></script>
 <body>
 
 <section>

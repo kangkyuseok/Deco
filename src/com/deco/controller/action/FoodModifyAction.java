@@ -43,13 +43,13 @@ public class FoodModifyAction implements Action {
 		      MultipartRequest multi_request = new MultipartRequest(request,path,size,"UTF-8",
 		                                    new DefaultFileRenamePolicy());
 		   	
-		      
+		      idx=Integer.parseInt(multi_request.getParameter("fidx"));
 		      String name = multi_request.getParameter("name");
 				String addr = multi_request.getParameter("addr");
 				String location = multi_request.getParameter("location");
-				String menu1 = multi_request.getParameter("menu");
-				String menu2 = multi_request.getParameter("menu");
-				String menu3 = multi_request.getParameter("menu");
+				String menu1 = multi_request.getParameter("menu1");
+				String menu2 = multi_request.getParameter("menu2");
+				String menu3 = multi_request.getParameter("menu3");
 				String price1 = multi_request.getParameter("price1");
 				String price2 = multi_request.getParameter("price2");
 				String price3 = multi_request.getParameter("price3");

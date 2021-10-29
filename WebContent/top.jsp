@@ -10,6 +10,28 @@
   <link rel="stylesheet" href="top_bottom.css">
 </head>
 <body>
+<header class="header">
+    <a href="home.deco" class="logo">
+      <div class="logo">
+        DECO
+      </div>
+    </a>
+    <ul class="menu">
+      <li><a href="cafeList.deco">Search</a></li>
+      <li><a href="best.deco">Hot Place</a></li>
+      <li><a href="mypage.deco">My Page</a></li>
+      <li><a href="restration.deco">Restration</a></li>
+    </ul>
+    <div class="nickname">
+      <a href="">${user.name }</a>
+      <span> 님 반갑습니다.</span>
+    </div>
+    <a href="#" class="hamburger"><i class="fas fa-bars"></i></a>
+  </header>
+
+
+
+<%-- 
   <header class="header">
   <a href="home.deco" class="logo">
     <div class="logo">
@@ -37,6 +59,6 @@
 	<!-- </li> -->
     </div>
     <a href="#" class="hamburger"><i class="fas fa-bars"></i></a>
-  </header>
+  </header> --%>
 </body>
 </html>

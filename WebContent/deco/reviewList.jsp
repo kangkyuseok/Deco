@@ -24,7 +24,14 @@
               <span>평점</span>
               <span>${vo.grade }</span>
             </li>
-            <li> <a href ="#" class="listBtn">글 보러가기</a> </li>
+            <c:if test="${vo.refidx ne 0 }">
+            <li> <a href ="cafe.deco?idx=${vo.refidx}" class="listBtn">카페글 보기</a> </li> </c:if>
+            <c:if test="${vo.fidx ne 0 }">
+            <li> <a href ="food.deco?fidx=${vo.fidx}" class="listBtn">식당글 보기</a> </li> </c:if>
+            <c:if test="${vo.sidx ne 0 }">
+            <li> <a href ="shows.deco?sidx=${vo.sidx}" class="listBtn">공연글 보기</a> </li> </c:if>
+            <c:if test="${vo.eidx ne 0 }">
+            <li> <a href ="etc.deco?eidx=${vo.eidx}" class="listBtn">체험글 보기</a> </li> </c:if>
           </ul>
           <div class="reviewText">
             ${vo.content }

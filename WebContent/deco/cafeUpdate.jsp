@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<nav>
+<%-- <nav>
 	<ul>
 	<li id="login" >
     <c:if test="${sessionScope.user == null }">
@@ -26,7 +26,7 @@
 	</c:if>
     	</li>
     </ul>
-</nav>
+</nav> --%>
 
 
 <section>

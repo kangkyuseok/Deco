@@ -12,7 +12,7 @@
 </head>
 <body>
 <section>
-		<h3>카페 추천지 등록</h3>
+		
 		<!-- <form  method="post" action="cafeInsertAction.deco" enctype="multipart/form-data" > -->
   <article>
         <div class="container" role="main">

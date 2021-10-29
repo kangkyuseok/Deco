@@ -8,14 +8,111 @@
 <head>
 <meta charset="UTF-8">
 <title>home 화면</title>
+  <link rel="stylesheet" href="css/hotPlace.css">
+  <script src="https://kit.fontawesome.com/96c30f85d8.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <%@ include file="../top.jsp" %>
+ <div class="decoList">
+    <div class="hotplTitle">
+      <div>DECO</div>
+      <div>TOP<span>3</span></div>
+    </div>
+    <div class="hotpleAll">
+      <div class="category cafe">CAFE</div>
+    <c:forEach var="vo" items="${CafeList}" >
+      <section class="lists cafe">
+        <a class="list" href="cafe.deco?idx=${vo.idx}">
+          <ul class="listContents">
+            <li class="listName">${vo.content }</li>
+            <li class="listText">수제 쿠키 맛집. 모든 재료는 직접 공수하며 매장에서 실제로 디저트를 베이킹.</li>
+            <li>
+              <ul class="locationAndReveiwAndGrade">
+                <li>${vo.location }</li>
+                <li>리뷰 : ${reviewcnts[status.index]}</li>
+                <li>평점 : ${vo.grade }</li>
+              </ul>
+            </li>
+          </ul>
+        </a>
+          <img src="/image/${vo.outimage}" onerror="/image/${vo.outimage}" alt="cafe-out" class="img" width="200px" height="200px">
+        </section>
+           </c:forEach>
+           <div class="hotpleAll">
+      <div class="category cafe">FOOD</div>
+           <c:forEach var="vo" items="${FoodList}" >
+      <section class="lists cafe">
+        <a class="list" href="food.deco?idx=${vo.fidx}">
+          <ul class="listContents">
+            <li class="listName">${vo.content }</li>
+            <li class="listText">수제 쿠키 맛집. 모든 재료는 직접 공수하며 매장에서 실제로 디저트를 베이킹.</li>
+            <li>
+              <ul class="locationAndReveiwAndGrade">
+                <li>${vo.location }</li>
+                <li>리뷰 : ${reviewcnts[status.index]}</li>
+                <li>평점 : ${vo.grade }</li>
+              </ul>
+            </li>
+          </ul>
+        </a>
+          <img src="/fimage/${vo.outimage}" onerror="/fimage/${vo.outimage}" alt="cafe-out" class="img" width="200px" height="200px">
+        </section>
+           </c:forEach>
+             <div class="hotpleAll">
+      <div class="category cafe">Shows</div>
+           <c:forEach var="vo" items="${ShowsList}" >
+      <section class="lists cafe">
+        <a class="list" href="shows.deco?idx=${vo.sidx}">
+          <ul class="listContents">
+            <li class="listName">${vo.content }</li>
+            <li class="listText">수제 쿠키 맛집. 모든 재료는 직접 공수하며 매장에서 실제로 디저트를 베이킹.</li>
+            <li>
+              <ul class="locationAndReveiwAndGrade">
+                <li>${vo.location }</li>
+                <li>리뷰 : ${reviewcnts[status.index]}</li>
+                <li>평점 : ${vo.grade }</li>
+              </ul>
+            </li>
+          </ul>
+        </a>
+          <img src="/simage/${vo.outimage}" onerror="/simage/${vo.outimage}" alt="cafe-out" class="img" width="200px" height="200px">
+        </section>
+           </c:forEach>
+             <div class="hotpleAll">
+      <div class="category cafe">Etc</div>
+           <c:forEach var="vo" items="${EtcList}" >
+      <section class="lists cafe">
+        <a class="list" href="etc.deco?idx=${vo.eidx}">
+          <ul class="listContents">
+            <li class="listName">${vo.content }</li>
+            <li class="listText">수제 쿠키 맛집. 모든 재료는 직접 공수하며 매장에서 실제로 디저트를 베이킹.</li>
+            <li>
+              <ul class="locationAndReveiwAndGrade">
+                <li>${vo.location }</li>
+                <li>리뷰 : ${reviewcnts[status.index]}</li>
+                <li>평점 : ${vo.grade }</li>
+              </ul>
+            </li>
+          </ul>
+        </a>
+          <img src="/eimage/${vo.outimage}" onerror="/image/${vo.outimage}" alt="ecafe-out" class="img" width="200px" height="200px">
+        </section>
+           </c:forEach>
+           
+</div>
+</div>
+</div>
+</div>
+</div>
 
-<table>
+
+
+
+
+<%-- <table>
 <tr> 
 <td> 
-<c:forEach var="vo" items="${CafeList}">
+<c:forEach var="vo" items="${CafeList}" class="category cafe">
     <h5>오늘의 카페 추천</h5>
     <ul>
     	<li> <a href ="cafe.deco?idx=${vo.idx}">이름 : ${vo.name }</a></li>
@@ -75,7 +172,14 @@
     </c:forEach>
 </td>
 </tr>
-</table>
+</table> --%>
+
+
+<!-- </section>
+    </div>
+    
+  </div> -->
+
 
 <%@ include file="../bottom.jsp" %>
 
