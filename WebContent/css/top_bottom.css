@@ -1,9 +1,11 @@
 :root {
   /* color */
   --black-color: #232323;
-  --white-color: #f9f8f8;
+  /* --white-color: #f9f8f8; */
+  --white-color: white;
   --light-gray-color: #b2b2b2;
   --dark-gray-color: rgb(124, 124, 124);
+  --purple-color: #6900ff;
 
   /* size */
   --padding: 12px;
@@ -28,13 +30,16 @@
   justify-content: space-between;
   align-items: flex-end;
   padding: var(--padding);
-  background-color: var(--black-color);
-  color: var(--white-color);
+  background-color: var(--white-color);
+  border-bottom: 2px solid var(--purple-color);
 }
 
 .logo {
   font-size: calc(var(--font-large) * 2);
-  margin-left: var(--padding);
+  margin-left: calc(var(--padding) / 2);
+  color: var(--purple-color);
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .menu {
@@ -49,7 +54,7 @@
 
 a {
   text-decoration: none;
-  color: var(--white-color);
+  color: var(--black-color);
   font-weight: bold;
 }
 
@@ -62,7 +67,7 @@ a {
 }
 
 .nickname a:hover {
-  color: var(--white-color);
+  color: var(--purple-color);
   text-decoration: underline;
 }
 
@@ -74,11 +79,16 @@ a {
 /* bottom */
 
 .footer {
-  background-color: var(--black-color);
-  width:100%;
+  border-top: 2px solid var(--purple-color);
+  background-color: var(--white-color);
 }
 
-.footerTitle,
+.footerTitle {
+  padding: var(--padding);
+  font-weight: bold;
+  color: var(--purple-color);
+}
+
 .footerContent,
 .footerText,
 .footerBot1,
@@ -119,4 +129,81 @@ a {
 
 .footer hr {
   margin: 0 var(--padding);
+}
+
+.hamburger {
+  display: none;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-left: 0px;
+    border-top: 2px solid var(--purple-color);
+  }
+
+  .menu li {
+    height: calc(var(--padding) * 4);
+    padding-right: 0px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+  }
+
+  .menu li:hover {
+    background-color: var(--purple-color);
+    cursor: pointer;
+    color: white;
+  }
+
+  .menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: none;
+  }
+
+  .menu a:hover {
+    color: white;
+  }
+
+  .nickname {
+    display: none;
+    /* position: absolute;
+    right: 0;
+    top: 20px; */
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 3px;
+    font-size: 30px;
+    color: var(--purple-color);
+    cursor: pointer;
+    padding: 2px 7px;
+    padding-top: 0px;
+    border-radius: 5px;
+  }
+
+  .hamburger:active {
+    color: white;
+    background-color: var(--purple-color);
+  }
+
+  .menu.active {
+    display: flex;
+  }
 }

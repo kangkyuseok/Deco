@@ -7,13 +7,14 @@
 <meta charset="UTF-8">
 <title>::deco::cafe등록</title>
 <%@ include file="../top.jsp" %>
-</head>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/cafeInsert.css">
+</head>
 <body>
 <section>
 		<h3>카페 추천지 등록</h3>
-		<form  method="post" action="cafeInsertAction.deco" enctype="multipart/form-data" >
+		<!-- <form  method="post" action="cafeInsertAction.deco" enctype="multipart/form-data" > -->
+  <div>
   <article>
         <div class="container" role="main">
             <div class="logo-wrap">
@@ -21,14 +22,14 @@
             </div>
             <div class="form_wrap">
                 <form name="form" id="form" role="form" method="post"
-                    action="${pageContext.request.contextPath}/board/saveBoard">
+                    action="cafeInsertAction.deco" enctype="multipart/form-data">  <%-- ${pageContext.request.contextPath}/board/saveBoard --%>
                     <div class="form-control-wrap">
-                        <label for="title">지역*</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="강남">
+                        <label for="location">지역*</label>
+                        <input type="text" class="form-control" name="location" id="title" placeholder="지역을 입력하세요">
                     </div>
                     <div class="form-control-wrap">
                         <label for="name">상호*</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="상호명을 입력하세요">
                     </div>
                     <div class="form-control-wrap">
                         <label for="grade">평점*</label>
@@ -72,9 +73,9 @@
                         <label for="openTime" class="ft-tit">영업시간*</label>
                         <div class="form-time-wrap">
                             <span class="ft-tit">Open</span>
-                            <input type="time" class="form-time" name="openTime" id="openTime">
+                            <input type="time" class="form-time" name="opentime" id="openTime">
                             <span class="ft-tit">Close</span>
-                            <input type="time" class="form-time" name="closeTime" id="closeTime">
+                            <input type="time" class="form-time" name="closetime" id="closeTime">
                         </div>
                     </div>
                     <div class="form-control-wrap">
@@ -83,7 +84,7 @@
                                 <div for="" class="pre-thumbnail">외부 사진*</div>
                                 <label for="file-upload" class="file-upload">업로드</label>
                                 <div id="image_container"></div>
-                                <input type="file" id="file-upload" accept="image/*">
+                                <input type="file" id="file-upload" accept="image/*" name="outpic">
                             </div>
                             <div id="view-thumbnail" class="thubmbail"></div>
                         </div>
@@ -93,7 +94,7 @@
                             <div >
                                 <div for="" class="pre-thumbnail">내부 사진*</div>
                                 <label for="file-upload2" class="file-upload">업로드</label>
-                                <input type="file" id="file-upload2" accept="image/*">
+                                <input type="file" id="file-upload2" accept="image/*" name="intpic">
                             </div>
                             <div id="view-thumbnail2" class="thubmbail"></div>
                         </div>
@@ -105,16 +106,19 @@
                         <!-- <input type="text" class="form-control" name="tag" id="tag" placeholder=""> -->
                     </div>
                     <div class="form-control-wrap">
-                        <label for="tag">전화번호*</label>
-                        <input type="text" class="form-control" name="tag" id="tag" placeholder="010XXXXXXXX">
+                        <label for="phone">전화번호*</label>
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="010XXXXXXXX">
                     </div>
                     <div class="form-btn">
                         <input type="submit" value="등록 완료" class="submit">
                     </div>
                 </form>
             </div>
+                
+            </div>
     </article>
-            </form>
+    </div>
+            <!-- </form> -->
 
 
 		<!-- <table>
@@ -183,8 +187,7 @@
 				</table>
 				
 				 -->
-
-            <script src="./upload.js"></script>
+			
 </section>
 <script type="text/javascript">
 function setThumbnail(event) {
@@ -197,6 +200,7 @@ function setThumbnail(event) {
 	
 </script>
 
+            <script src="./upload.js"></script>
 </body>
 <%@ include file="../bottom.jsp" %>
 </html>

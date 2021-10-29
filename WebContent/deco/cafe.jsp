@@ -19,7 +19,7 @@
       <a href="showsList.deco">Show</a>
       <a href="etcList.deco">Activity</a>
     </nav>
-<form type="hidden" action="cafeUpdate.deco?page=${page}"method="post">
+<form action="cafeUpdate.deco?page=${page}"method="post">
 <input type="hidden" value="${cafe.idx}" name="idx">
  <ul class="detailContents">
       <li class="detailTitle">
@@ -29,11 +29,11 @@
       <li class="detailImg">
         <div class="outImg">
           <div class="detailName"><외부 사진></div>
-          <img src="/image/${cafe.inimage}" alt="cafe_in">
+          <img src="/image/${cafe.outimage}" alt="cafe_out">
         </div>
         <div class="inImg">
           <div class="detailName"><내부 사진></div>
-          <img src="/image/${cafe.outimage}" alt="cafe_out">
+          <img src="/image/${cafe.inimage}" alt="cafe_in">
         </div>
         
         

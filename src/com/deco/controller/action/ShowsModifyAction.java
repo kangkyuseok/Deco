@@ -46,19 +46,25 @@ public class ShowsModifyAction implements Action {
 		                                    new DefaultFileRenamePolicy());
 		   	
 		      
-	    idx=Integer.parseInt(multi_request.getParameter("sidx"));
-		String location= multi_request.getParameter("location");
-		String name= multi_request.getParameter("name");
-		double grade= Double.parseDouble(multi_request.getParameter("grade"));
-		String content= multi_request.getParameter("content");
-		String menu= multi_request.getParameter("menu");
-		String opentime= multi_request.getParameter("opentime");
-		String closetime= multi_request.getParameter("closetime");
-		String addr= multi_request.getParameter("addr");
-		String phone= multi_request.getParameter("phone");
-		String outimage = multi_request.getFilesystemName("outimage");		
-		String inimage = multi_request.getFilesystemName("inimage");
-		String link = multi_request.getParameter("link");
+		      String name = multi_request.getParameter("name");
+				String addr = multi_request.getParameter("addr");
+				String location = multi_request.getParameter("location");
+				String menu1 = multi_request.getParameter("menu");
+				String menu2 = multi_request.getParameter("menu");
+				String menu3 = multi_request.getParameter("menu");
+				String price1 = multi_request.getParameter("price1");
+				String price2 = multi_request.getParameter("price2");
+				String price3 = multi_request.getParameter("price3");
+				double grade= Double.parseDouble(multi_request.getParameter("grade"));
+				String phone = multi_request.getParameter("phone");
+				String opentime = multi_request.getParameter("opentime");
+				String closetime = multi_request.getParameter("closetime");
+				String content = multi_request.getParameter("content");
+				String outimage = multi_request.getFilesystemName("outpic");		
+				String link = multi_request.getFilesystemName("link");		
+//			    String inimage = multi_request.getFilesystemName("intpic");	
+				
+				String menu = menu1+" : "+price1+"원";
 
 		System.out.println(link);
 		
@@ -74,7 +80,7 @@ public class ShowsModifyAction implements Action {
 		dto.setAddr(addr);
 		dto.setPhone(phone);
 		dto.setOutimage(outimage);
-		dto.setInimage(inimage);
+//		dto.setInimage(inimage);
 		dto.setLink(link);
 		
 		ShowsDao dao = ShowsDao.getInstance();
