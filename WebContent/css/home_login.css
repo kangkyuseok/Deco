@@ -63,6 +63,7 @@ body {
 .decoTitleTop_1,
 .decoTitleMiddle_2 {
   color: var(--purple-color);
+  /* font-family: AvenirNextLTPro-Bold, sans-serif; */
 }
 
 .decoTitleTop {

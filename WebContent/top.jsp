@@ -8,6 +8,9 @@
 
   <title>Document</title>
   <link rel="stylesheet" href="top_bottom.css">
+  <script src="top.js" defer>
+  	
+  </script>
 </head>
 <body>
 <header class="header">
@@ -19,12 +22,13 @@
     <ul class="menu">
       <li><a href="cafeList.deco">Search</a></li>
       <li><a href="best.deco">Hot Place</a></li>
+      <li><a href="restration.deco">Registration</a></li>
       <li><a href="mypage.deco">My Page</a></li>
-      <li><a href="restration.deco">Restration</a></li>
     </ul>
     <div class="nickname">
       <a href="">${user.name }</a>
       <span> 님 반갑습니다.</span>
+      <a href="logout.deco" class="menu">로그아웃</a>
     </div>
     <a href="#" class="hamburger"><i class="fas fa-bars"></i></a>
   </header>

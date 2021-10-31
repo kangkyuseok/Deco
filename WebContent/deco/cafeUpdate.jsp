@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-control-wrap">
                         <label for="name">상호</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="" >
+                        <input type="text" class="form-control" name="name" id="name" placeholder="" value="${cafe.name}"}>
                     </div>
                     <div class="form-control-wrap">
                         <label for="grade">평점</label>
@@ -57,7 +57,7 @@
                             <div class="menu_container">
                                 <div class="menu_123">
                                     <div class="menu_el">
-                                        메뉴1<input type="text" class="form-control" name="menu1" id="menu1" placeholder="ex) 아메리카노"  >
+                                        메뉴1<input type="text" class="form-control" name="menu1" id="menu1" placeholder="ex) 아메리카노">
                                     </div>
                                     <div class="menu_el">
                                         가격1<input type="text" class="form-control" name="price1" id="price1" placeholder="ex) 3,000">원

@@ -18,7 +18,6 @@
 		<nav class="category">
 			<a href="cafeList.deco">Cafe</a> <a href="foodList.deco">Restaurant</a>
 			<a href="showsList.deco">Show</a> <a href="etcList.deco">Activity</a>
-			<a href="home.deco">home</a>
 		</nav>
 
 		<section class="checkbox main">
@@ -141,6 +140,9 @@
   }
   
   </script>
+  <div class="topBtn">
+        <a href="#" title="위로 가기"><i class="fas fa-arrow-up"></i></a>
+      </div>
   <%@ include file="../bottom.jsp" %>
 </body>
 </html>

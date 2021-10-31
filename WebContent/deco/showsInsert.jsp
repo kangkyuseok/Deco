@@ -203,6 +203,6 @@ function setThumbnail(event) {
 </script>
 
             <script src="./upload.js"></script>
-</body>
 <%@ include file="../bottom.jsp" %>
+</body>
 </html>

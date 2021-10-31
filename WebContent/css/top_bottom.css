@@ -81,6 +81,7 @@ a {
 .footer {
   border-top: 2px solid var(--purple-color);
   background-color: var(--white-color);
+  width:100%;
 }
 
 .footerTitle {
@@ -133,6 +134,20 @@ a {
 
 .hamburger {
   display: none;
+}
+
+topBtn {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+}
+
+.topBtn a {
+  color: var(--purple-color);
+  background-color: var(--white-color);
+  border: 3px solid var(--purple-color);
+  padding: 5px 9px;
+  border-radius: 5px;
 }
 
 /* 반응형 디자인 */

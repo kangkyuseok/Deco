@@ -69,42 +69,42 @@ body {
 }
 
 .listBtn .blue {
-  background-image: url(img/blue1-a.svg);
+  background-image: url(../img/blue1-a.svg);
   background-size: 300px;
 }
 
 .listBtn .blue:hover {
-  background-image: url(img/blue1-b.svg);
+  background-image: url(../img/blue1-b.svg);
   background-size: 300px;
 }
 
 .listBtn .green {
-  background-image: url(img/green1-a.svg);
+  background-image: url(../img/green1-a.svg);
   background-size: 300px;
 }
 
 .listBtn .green:hover {
-  background-image: url(img/green2.svg);
+  background-image: url(../img/green2.svg);
   background-size: 300px;
 }
 
 .listBtn .pink {
-  background-image: url(img/pink1-a.svg);
+  background-image: url(../img/pink1-a.svg);
   background-size: 300px;
 }
 
 .listBtn .pink:hover {
-  background-image: url(img/pink1-b.svg);
+  background-image: url(../img/pink1-b.svg);
   background-size: 300px;
 }
 
 .listBtn .purple {
-  background-image: url(img/purple1-a.svg);
+  background-image: url(../img/purple1-a.svg);
   background-size: 300px;
 }
 
 .listBtn .purple:hover {
-  background-image: url(img/purple1-b.svg);
+  background-image: url(../img/purple1-b.svg);
   background-size: 300px;
 }
 
