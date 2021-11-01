@@ -1,0 +1,1739 @@
+-- ctrl + F 로     cafe users food ete shows 인서트 찾기해서 등록해주세욥
+
+
+create table cafe(
+   idx int auto_increment,
+   name varchar(25) not null,
+   content varchar(100) not null,
+   phone varchar(20) not null,
+   addr varchar(50) not null,
+   menu varchar(200) not null,
+   opentime varchar(10) not null,
+   closetime varchar(10) not null,
+   grade decimal(3,2) not null,
+   location varchar(10) not null,
+   outimage varchar(100),   -- list에 들어갈 image
+   inimage varchar(100),   -- detail에 들어갈 image
+   primary key(idx)
+);
+
+create table users(
+	idx int auto_increment,
+	name varchar(5) not null,
+	password varchar(10) not null,
+	email varchar(30) not null,
+	gender char(15) check (gender in ('남','여')),
+	age tinyint not null,
+	phone varchar(11) not null,
+	addr varchar(50) not null,
+	nickname varchar(10) not null,
+	primary key(idx)
+);
+
+create table shows(
+   sidx int auto_increment,
+   name varchar(25) not null,
+   content varchar(100) not null,
+   phone varchar(20) not null,
+   addr varchar(50) not null,
+   menu varchar(200) not null,
+   opentime varchar(10) not null,
+   closetime varchar(10) not null,
+   grade decimal(3,2) not null,
+   location varchar(10) not null,
+   outimage varchar(100),   -- list에 들어갈 image
+   inimage varchar(100),   -- detail에 들어갈 image
+   link varchar(100),
+   primary key(sidx)
+);
+
+create table etc(
+   eidx int auto_increment,
+   name varchar(25) not null,
+   content varchar(100) not null,
+   phone varchar(20) not null,
+   addr varchar(50) not null,
+   menu varchar(200) not null,
+   opentime varchar(10) not null,
+   closetime varchar(10) not null,
+   grade decimal(3,2) not null,
+   location varchar(10) not null,
+   outimage varchar(100),   -- list에 들어갈 image
+   inimage varchar(100),   -- detail에 들어갈 image
+   primary key(eidx)
+);
+
+create table food(
+   fidx int auto_increment,
+   name varchar(25) not null,
+   content varchar(200) not null,
+   phone varchar(20) not null,
+   addr varchar(50) not null,
+   menu varchar(200) not null,
+   opentime varchar(10) not null,
+   closetime varchar(10) not null,
+   grade decimal(3,2) not null,
+   location varchar(10) not null,
+   outimage varchar(100),  
+   inimage varchar(100),   
+   primary key(fidx)
+);
+
+create table dibs(
+   idx int auto_increment primary key,
+   dibCafe varchar(300),
+   dibFood varchar(300),
+   dibShow varchar(300),
+   dibEx varchar(300),
+   nickname varchar(10) not null,
+   foreign key (nickname) references users(nickname)
+);
+
+create table review(
+   idx int auto_increment,   -- 번호
+   nickname varchar(30) not null, -- 리뷰 작성 시 email
+   grade int not null, -- 리뷰 평점
+   content varchar(500) not null, -- 리뷰 내용
+   category varchar(20) not null,
+   imgfile varchar(100),
+   refidx int,
+   fidx int,
+   sidx int,
+   eidx int,
+   primary key(idx),
+   foreign key(nickname) references users(nickname),
+   foreign key(refidx) references cafe(idx),
+   foreign key(fidx) references food(fidx),
+   foreign key(sidx) references shows(sidx),
+   foreign key(eidx) references etc(eidx)
+);
+
+------------------------------------------------user----------------------------------------
+insert into users(name,password,email,gender,age,phone,addr,nickname)
+values('이현수','1001','soo@naver.com','남','26','01038319625','서울 관악구 봉천동','frontman');
+insert into users(name,password,email,gender,age,phone,addr,nickname)
+values('이지환','1002','hwan@naver.com','남','26','01093862375','경기도 성남시 분당동','51nam');
+insert into users(name,password,email,gender,age,phone,addr,nickname)
+values('강규석','1003','kang@naver.com','남','32','01023779159','서울 강남구 역삼동','aaaa');
+insert into users(name,password,email,gender,age,phone,addr,nickname)
+values('선명진','1004','seon@naver.com','남','33','01022765920','서울 중랑구 중화동','깐부');
+insert into users(name,password,email,gender,age,phone,addr,nickname)
+values('이동욱','1005','wook@naver.com','남','28','01013467946','경기도 부천시 원미동','abc');
+
+
+-------------------------------------food----------------------------
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values('땀땀',
+'베트남 전통 궁중 보양식 레시피를 바탕으로 엄선된 소고기와 사골을 우려낸 육수로 맛을 낸 쌀국수와 다양한 베트남식 보양 요리를 제공합니다.',
+'025548892',
+'서울 강남구 역삼동 817-31',
+'모둠 쌀국수 : 15,000원/매운 소곱창 쌀국수 : 14,000원/양지 쌀국수 : 9,000원',
+'11:00',
+'22:00',
+'4.39',
+'강남',
+'강남_food_out_1.png',
+'강남_food_in_1.png'
+);
+select * from food;
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values('올바른 스시',
+'저온 숙성된 사시미가 절대적으로 신선하며 모든 재료는 손수 준비합니다.',
+'0507143140',
+'서울 강남구 역삼동 813-11 1층',
+'특선초밥 : 15,000원/VIP초밥 : 25,000원/스페셜초밥 : 18,000원',
+'11:30',
+'23:00',
+'4.62' ,
+'강남',
+'강남_food_out_2.png',
+'강남_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'나폴리회관', 
+'나폴리회관은 미각과 시각을 동시에 충족시킬 수 있는 다양한 이탈리아 요리를 선보이는 곳입니다.',
+'05071316506', 
+'서울 강남구 역삼동 635-10 1층 나폴리회관', 
+'마르게리따 : 18,000원/콰트로 스타지오네 : 22,000원/뇨끼 볼로네제 : 20,000원/라자냐 : 20,000원',
+'11:30', 
+'22:00',
+'4.26', 
+'강남',
+'강남_food_out_3.png',
+'강남_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'미도인', 
+'셰프의 손길로 한땀한땀 정성을 들인 미도인 만의 한정 스페셜 메뉴 미도인 구첩 반상, 400 등심 스테이크 덮밥이 준비되어 있습니다.', 
+'025551995', 
+'서울 강남구 역삼동 619-3 지상1층', 
+'스테이크 덮밥 : 10,300원/대창 큐브 스테이크 덮밥 : 14,100원/부챗살 스테이크 : 17,000원', 
+'11:30', 
+'21:00',
+'4.4', 
+'강남', 
+'강남_food_out_4.png',
+'강남_food_in_4.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'스시소라', 
+'광화문에 스시 코우지에서 운영하는 모던한 분위기의 스시 오마카세', 
+'027338400', 
+'서울 종로구 종로1가 24', 
+'런치 : 50,000원/디너 : 80,000원', 
+'11:30', 
+'21:50', 
+'4.54', 
+'인사동', 
+'인사동_food_out_1.png',
+'인사동_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'봉탁 항아리 바비큐', 
+'항아리 속에서 커피나무 숯불로 2시간 동안 초벌하여 고기의 겉은 바삭하고 속은 촉촉한 부드러운 식감의 통삼겹이 주력 메뉴 입니다.', 
+'05071437200', 
+'서울 종로구 인사동 152 2층', 
+'바베큐set : 17,000원/코다리막국수 : 9,000원/봉탁주 : 10,000원', 
+'11:30', 
+'22:00', 
+'4.86', 
+'인사동',
+'인사동_food_out_2.png',
+'인사동_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'청진옥', 
+'1937년 개업한 해장국의 원조. 종로구 종로1가 위치, 피맛골에 3대째 이어오는 해장국 맛집', 
+'027351690', 
+'서울 종로구 청진동 183-1', 
+'해장국 : 10,000원/해장국(특) : 12,000원/모듬수육 : 35,000원', 
+'00:00', 
+'24:00', 
+'4.32', 
+'인사동', 
+'인사동_food_out_3.png',
+'인사동_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'꽁시면관', 
+'새우소룡포, 광동식튀김면, 마라탕 등을 주력 메뉴로! 명동 터줏대감 꽁시면관! 맛도 가격도 즐거운 곳!',
+'0507137008', 
+'서울 중구 충무로1가 22-13 꽁시면관', 
+'꿔바로우 : 20,000원/우육탕면 : 9,000원/소룡포 : 7,500원/마라탕 : 10,000원', 
+'11:00', 
+'21:00', 
+'4.36', 
+'인사동', 
+'인사동_food_out_4.png',
+'인사동_food_in_4.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'카멜로연남', 
+'연남동데이트 지니가 강추하는 분위기 좋은유럽가정식',
+'05071485380', 
+'서울 마포구 연남동 383-23 1.5층', 
+'알리오올리오 : 15,000원/통삼겹 로제 리조또 : 16,000원/청양새우 크림 파스타 : 16,000원',
+'12:00',
+'21:00', 
+'4.71', 
+'연남동',
+'연남동_food_out_1.png',
+'연남동_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'차만다', 
+'영국 가정식 레스토랑', 
+'023370812', 
+'서울 마포구 연남동 228-57 2층', 
+'셰퍼드 파이 : 19,500원/퀸즈가든 : 13,500원/하이드 파크 : 14,500원', 
+'11:30', 
+'21:30', 
+'4.83', 
+'연남동', 
+'연남동_food_out_2.png',
+'연남동_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'연남토마', 
+'저희는 신선한재료와 다양한 조리법으로 손님들께 다채롭고 한결같은 요리를 제공하기 위해 최선을 다하는 퓨전덮밥/파스타맛집입니다', 
+'05071329806', 
+'서울 마포구 연남동 568-26 연남토마', 
+'가츠덮밥 : 10,000원/명란바질오일 파스타 : 15,000원/아키니쿠동 : 13,000원/생연어덮밥 : 13,000원', 
+'11:30', 
+'22:00', 
+'4.46', 
+'연남동', 
+'연남동_food_out3.png',
+'연남동_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'연남동와이탑', 
+'분위기 있게 음료,주류를 한 잔씩 즐길 수 있는 루프탑과 편안하게 양식을 즐길 수 있는 레스토랑이 준비되어 있습니다.', 
+'02332320075', 
+'서울 마포구 연남동 223-21 2,3층/루프탑', 
+'비프 웰링턴 : 39,000원/풍기크림파스타 : 18,500원/생연어 스테이크 : 19,500원/파스타종류 : 17,000원', 
+'11:30', 
+'22:00', 
+'4.91', 
+'연남동', 
+'연남동_food_out_4.png',
+'연남동_food_in_4.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'NoiTre(노이트레)', 
+'상수동 조용한 골목에 위치한 이탈리안 레스토랑, 젊은 사장들의 미니멀한 감성을 담은 공간!', 
+'050714721521', 
+'서울 마포구 상수동 92-8', 
+'등심 스테이크 : 23,000원/고르곤졸라크림뇨끼 : 16,000원/부채살 스테이크 : 20,000원', 
+'11:30', 
+'22:00', 
+'4.74', 
+'상수', 
+'상수_food_out_1.png',
+'상수_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'칸다소바', 
+'칸다소바는 동경식 마제소바 전문점입니다 동경식 마제소바는 62가지의 재료가 들어간 한그릇에 집중한 요리입니다.', 
+'023321660', 
+'서울 마포구 상수동 91-3', 
+'마제소바 : 10,000원/아부라소바 : 10,000원/돼지껍데기 아부라소바 : 13,000원', 
+'11:30', 
+'21:30',
+'4.45', 
+'상수', 
+'상수_food_out_2.png',
+'상수_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'경주식당', 
+'깔끔한 고기한상과 가정식이 맛있는 홍대 상수 맛집', 
+'023221674', 
+'서울 마포구 상수동 314-10', 
+'목살정식 : 13,000원/목살 카레덮밥 : 11,000원/고기 한상 : 38,000원', 
+'11:30', 
+'15:30', 
+'4.44', 
+'상수', 
+'상수_food_out_3.png',
+'상수_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'이응이응이응이응', 
+'정원,1층,2층,루프탑으로 이루어진 이응이응이응이응의 모든 공간은 분리되어 프라이빗한 공간 이용이 가능합니다.', 
+'050713515507', 
+'서울 마포구 상수동 317-9 1층 2층 정원 및 루프탑',
+'쉬림프 잠발라야 : 17,800원/벌꿀단호박 파스타 : 17,800원/트러플 뇨끼 : 24,800원', 
+'11:00', 
+'22:00', 
+'4.65', 
+'상수', 
+'상수_food_out_4.png',
+'상수_food_in_4.png'
+);
+
+select * from food;
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'명동교자', 
+'1966년에 개점한 명동교자는 전통 조리법을 고수하는 칼국수 전문점으로 가족 경영 음식점이다. 선보이는 메뉴는 4가지 품목으로 단출하지만, 만두와 칼국수는 오랫동안 이곳을 대중들에게 알린 대표 메뉴라 할 수 있다.', 
+'027765348', 
+'서울 중구 명동2가 25-2', 
+'칼국수 : 9,000원/만두 : 10,000원/비빔국수 : 9,000원/콩국수 : 10,000원', 
+'10:00', 
+'21:30', 
+'4.41', 
+'명동', 
+'명동_food_out_1.png',
+'명동_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+
+'명동식당', 
+'퓨전한식주점으로 운영되고있고, 다양한 술과 요리를 즐기실 수 있습니다.', 
+'0226766412', 
+'서울 영등포구 영등포동7가 70-1', 
+'차돌영양부추무침 : 28,000원/얼큰닭볶음탕 : 25,000원/깻잎제육볶음 : 18,000원', 
+'17:00', 
+'22:00',
+'4.49', 
+'명동', 
+'명동_food_out_2.png',
+'명동_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'디 라이프스타일 키친', 
+'미슐랭 레스토랑 출신 셰프팀이 최상의 재료로 선사하는 건강한 미식여행. 데이트, 프로포즈, 기념일, 가족모임, 비즈니스 미팅까지. 특별한 만남을 더욱 특별하게 만드는 프라이빗하게 준비된 룸과 오픈 공간에서 합리적인 가격으로 즐겨보세요.', 
+'050714940100', 
+'서울 중구 태평로1가 84 서울파이낸스센터 지하1층 101호',
+'로얄 명란 김퓨레 비빔밥 : 21,900원/토마토 파스튜 : 25,000원/감자퓨레 등심 스테이크 : 45,900원',
+'11:15', 
+'22:00', 
+'4.51', 
+'명동', 
+'명동_food_out_3.png',
+'명동_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'온센', 
+'텐동 하나로 많은 체인점을 둔 맛집!', 
+'050713941815', 
+'서울 중구 태평로1가 84', 
+'온센텐동 : 8,900원/보리멸텐동 : 13,900원/에비텐동 : 12,900원/이까텐동 : 14,900원', 
+'11:30', 
+'20:30', 
+'4.37', 
+'명동', 
+'명동_food_out_4.png',
+'명동_food_in_4.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'이태원 121 by 익선 121', 
+'익선동의 정갈한 한식 익선121이 가족적 문화가 특징적인 따뜻한 이탈리안 가정 요리를 선보입니다.',  
+'050714800239', 
+'서울 용산구 이태원동 72-41 1, 2층', 
+'마늘쫑 파스타 : 15,000원/그린 가리비 파스타 : 28,000원/블랙 봉골레 오일 파스타 : 18,000원', 
+'11:00', 
+'15:00', 
+'4.68', 
+'이태원', 
+'이태원_food_out_1.png',
+'이태원_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'로우앤슬로우', 
+'돈스파이크의 고기쟁이들을 위한 바베큐 식당.', 
+'050713392268', 
+'서울 용산구 이태원동 127-28 2층', 
+'브리스킷 플레이트 : 39,900원/비프 립 플레이트 : 42,900원/파티 플레이트 : 164,900원', 
+'12:00', 
+'21:00', 
+'4.3', 
+'이태원', 
+'이태원_food_out_2.png',
+'이태원_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'이속우화', 
+'저희 이속우화는 한우 1++ BMS NO.9 이상의 등급만을 취급하며 가장 합리적인 가격으로 고객에게 제공하고자 만들어진 브랜드입니다.',
+'050714767178', 
+'서울 용산구 한남동 32-25 지1층 이속우화', 
+'한우 맡김 차림 : 59,000원', 
+'17:30', 
+'21:00', 
+'4.54', 
+'이태원', 
+'이태원_food_out_3.png',
+'이태원_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'어글리소사이어티', 
+'이태원에 위치한 칵테일공간 & 다이닝 입니다. 먹을 수 있는 식용 꽃을 이용한 칵테일과 미국가정식 제공해 드려요!',
+'050713540892', 
+'서울 용산구 이태원동 66-3 6층', 
+'라자냐 : 17,000원/칵테일 : 10,000원/베이컨 스테이크 : 18,000원', 
+'15:00', 
+'22:00', 
+'4.53', 
+'이태원', 
+'이태원_food_out_4.png',
+'이태원_food_in_4.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'르블란서', 
+'궁금했던 익선동 분위기 좋은 프랑스 가정식 레스토랑', 
+'050713399951', 
+'서울 종로구 익선동 170-1', 
+'로스티드 치킨 : 24,000원/갈비살 라구 파스타 : 19,000원/항정살 스테이크 : 23,000원', 
+'12:00', 
+'22:00', 
+'4.47', 
+'익선동', 
+'익선동_food_out_1.png',
+'익선동_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'솔솥 익선점', 
+'부모님을 모시고 갈 수 있는 실패하지 않는 식당입니다. 든든한 한끼를 찾고 계신다면 솔솥을 찾아주세요.',  
+'0507-1443-3473', 
+'서울 종로구 익선동 123-2 1층', 
+'와규 솥밥 : 15,000원/도미 관자 솥밥 : 15,000원/전복 솥밥 : 14,000원', 
+'11:30', 
+'21:00', 
+'4.47', 
+'익선동', 
+'익선동_food_out_2.png',
+'익선동_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'호호식당 익선', 
+'호호식당은 봄, 여름, 가을, 겨울 자연의 맛을 고스란히 담은 20여 가지의 일본가정식 메뉴와 곁들임 음식이 정성껏 준비되어 있습니다.', 
+'050713152384', 
+'서울 종로구 익선동 170-1', 
+'가츠나베 정식 : 14,000원/사케동 : 14,000원/로스가츠 정식 : 13,000원/생선가스 정식 : 13,000원', 
+'11:00', 
+'22:00', 
+'4.5', 
+'익선동', 
+'익선동_food_out_3.png',
+'익선동_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'mishmash', 
+'한옥에서 만나는 컨템포러리 코리안 다이닝 미쉬매쉬는 현대적인 조리 기법으로 재해석한 퓨전 한식을 선보입니다.', 
+'050714152211', 
+'서울 종로구 원서동 134-1', 
+'런치코스 : 50,000원/디너코스 : 80,000원', 
+'11:00', 
+'21:00', 
+'4.59', 
+'익선동', 
+'익선동_food_out_4.png',
+'익선동_food_in_4.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'오사이초밥', 
+'오마카세 입문하기 좋은 건대 초밥집.', 
+'050714235420',
+'서울 광진구 화양동 1-16 1층', 
+'런치 :17,000원/디너 : 26,000원/포장세트 : 18,000원', 
+'12:00', 
+'21:30', 
+'4.79', 
+'건대', 
+'건대_food_out_1.png',
+'건대_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'장미술상', 
+'장미술상에 방문한 모든이에게 옛날 시골 할머니집에서 봄직한 향기와 추억을 전하고 싶습니다.', 
+'01092331611', 
+'서울 광진구 화양동 9-84 장미술상 1 ~ 2층', 
+'매콤크림파스타 : 19,000원/가리비버터술찜 : 17,000원/딱새우회 : 변동', 
+'15:00', 
+'22:00', 
+'4.95',
+'건대',
+'건대_food_out_2.png',
+'건대_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'페스타마레', 
+'페스타마레는 덜어먹기 가능한 도구 비치 및 제공, 위생적 수저관리 , 종사자마스크 착용을 준수하는 곳으로 소재지 지자체의 인증을 받은 음식점 입니다.', 
+'050714069985', 
+'서울 광진구 자양동 2-14 2층 페스타마레', 
+'갈릭 스테이크 : 23,500원/크림감자뇨끼 : 11,000원/알리오올리오 : 8,000원', 
+'11:30', 
+'21:30', 
+'4.72', 
+'건대',
+'건대_food_out_3.png',
+'건대_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'후토', 
+'이자카야 후토는 일본식숯불꼬치구이, 사시미, 일품요리, 탕, 볶음, 튀김, 구이, 간단식사 등 다양한 수제 요리를 제공합니다.', 
+'024658590', 
+'서울 광진구 화양동 8-59', 
+'6종 모듬꼬치 : 17,000원/후토 모듬사시미 : 33,000원/소고기 타다키 : 18,000원', 
+'16:00', 
+'22:00', 
+'4.51', 
+'건대',
+'건대_food_out_4.png',
+'건대_food_in_4.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'동화', 
+'안녕하세요 요리주점 동화입니다. 저희는 남여노소 좋아하는 음식들에 동화의 색깔을 더하여 이색적이지만 편안한 맛을 지향합니다.', 
+'050714178351', 
+'서울 종로구 명륜4가 48-2 2층 동화', 
+'동화닭갈비 : 23,000원/꽃게찌개 : 26,000원/청양고추크림파스타 : 19,500원', 
+'17:00', 
+'02:00', 
+'4.71', 
+'대학로', 
+'대학로_food_out_1.png',
+'대학로_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'정돈', 
+'혜화역 대학로 맛집 수요미식회 나온 정돈 돈까스.', 
+'050714080924', 
+'서울 종로구 명륜4가 107 지층', 
+'안심카츠 : 14,000원/등심카츠 : 13,000원/스페셜 등심카츠 : 16,000원', 
+'11:00', 
+'21:00', 
+'4.48', 
+'대학로', 
+'대학로_food_out_2.png',
+'대학로_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'서양집', 
+'혜화역 대학로 분위기 좋은 이탈리안 레스토랑.', 
+'050714217725', 
+'서울 종로구 명륜4가 129', 
+'스테이크 샐러드 : 15,900원/고르곤 블루 리조또 : 13,900원/새우 로제 파스타 : 13,900원', 
+'11:30', 
+'20:20', 
+'4.58', 
+'대학로', 
+'대학로_food_out_3.png',
+'대학로_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'오이지', 
+'혜화역 분위기 정말 좋은 퓨전 한식집', 
+'050713559977', 
+'서울 종로구 명륜4가 142', 
+'오이지 소왕갈비 : 25,000원/인절미 삼겹 : 23,000원/명란 치즈 순두부 : 12,000원', 
+'11:30', 
+'22:00', 
+'4.5', 
+'대학로', 
+'대학로_food_out_4.png',
+'대학로_food_in_4.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'나성타코', 
+'저희는 LA 본토의 맛을 재현하고자 재료를 엄선하여 선택하였고 최고의 맛을 연구하였습니다.', 
+'023328180', 
+'서울 마포구 서교동 367-1 2층', 
+'고기선택 : 3,500원/퀘사디야 : 7,000원/나성나초 : 10,500원', 
+'11:30', 
+'21:00', 
+'4.68', 
+'홍대', 
+'홍대_food_out_1.png',
+'홍대_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'피자네버슬립스', 
+'초심 그대로 항상 깨어있는 자세로 피자를 만들고 손님을 응대하며 가치 있는 피자를 제공하고 있습니다. 다른 피자 브랜드와 차별화에 대해 말하지 않겠습니다.', 
+'050714141820', 
+'서울 마포구 서교동 400-13 4층 피자네버슬립스', 
+'지즈피자 : 20,000원/페퍼로니피자 : 21,000원/포테이토피자 : 26,000원', 
+'12:00', 
+'00:00', 
+'4.58', 
+'홍대', 
+'홍대_food_out_2.png',
+'홍대_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'이플로네의 하루', 
+'재료 품질로 승부하는 이탈리안 레스토랑.', 
+'050714321882', 
+'서울 마포구 서교동 334-18', 
+'부채살 스테이크 파스타 : 19,000원/트러플오일 파스타 : 16,900원/피자류 : 16,000원', 
+'11:30', 
+'22:00', 
+'4.83', 
+'홍대', 
+'홍대_food_out_3.png',
+'홍대_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'연남어부', 
+'도심 속 작은 수산시장, 연남어부 입니다.', 
+'023321981', 
+'서울 마포구 동교동 152-22 1층', 
+'모듬사시미 : 30,000원/시마아지 : 60,000원/활 고등어 : 30,000원', 
+'14:00', 
+'01:30', 
+'4.53', 
+'홍대', 
+'홍대_food_out_4.png',
+'홍대_food_in_4.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'주신당', 
+'전통주와 한국식재료를 활용한 12지신 시그니처 칵테일 과 위스키.', 
+'0222311806', 
+'서울 중구 흥인동 63', 
+'우미 라구파스타 : 18,000원/시그니쳐 칵테일 : ~18,000원/연어와 메밀국수 : 16,000원', 
+'17:00', 
+'22:00', 
+'4.49', 
+'동대문', 
+'동대문_food_out_1.png',
+'동대문_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'그릴1492', 
+'신당역 근처 토치로 구워먹는 이베리코 맛집.', 
+'050714011492', 
+'서울 중구 신당동 250-20',
+'꽃목살 : 16,000원/양갈비 : 27,000원/목차돌 : 15,000원/김치전골 : 6,000원', 
+'17:00', 
+'22:00', 
+'4.54', 
+'동대문',
+'동대문_food_out_2.png',
+'동대문_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'미즈컨테이너', 
+'떠먹는 피자와 바비큐 플레이트가 맛있는 특별한 공간.', 
+'0222832183', 
+'서울 중구 을지로6가 17-2 현대시티아울렛 지하1층', 
+'바비큐 플레이트 : 23,000원/베이컨포테이토 팬치즈 : 16,300원/하이파이브 팬치즈 : 18,900원', 
+'10:30', 
+'21:00', 
+'4.5', 
+'동대문', 
+'동대문_food_out_3.png',
+'동대문_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'앨리키친', 
+'입과 눈이 모두 즐거워 지는 신비로운 공간. 도심 속 숨겨진 정원에서 좋은 사람들과 맛있는 음식을 즐겨 보세요.', 
+'050713110214', 
+'서울 중구 쌍림동 214', 
+'앨리함박스테이크 : 13,500원/비프스테이크 : 35,000원/알리오올리오 : 16,500원/큐브스테이크 : 16,500원', 
+'11:00', 
+'21:00', 
+'4.54', 
+'동대문', 
+'동대문_food_out_4.png',
+'동대문_food_in_4.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'에드엣', 
+'가로수길에 위치한 브런치, 내추럴 와인바로 선별된 내추럴 와인과 특별한 파스타와 함께 독특한 식감과 맛의 바오를 드실 수 있는 편안한 공간입니다.', 
+'050714601720', 
+'서울 강남구 신사동 524-23 지하1층', 
+'올리브 타페나드 : 8,000원/양지 라구 파스타 : 15,000원/스테이크 김부각 : 23,000원', 
+'11:30', 
+'21:00', 
+'4.83',
+'가로수길', 
+'가로수길_food_out_1.png',
+'가로수길_food_in_1.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'핫쵸', 
+'히로시마 오코노미야끼를 핫쵸만의 방식으로 풀어내어 항상 엄선된 신선한 재료로 직접 눈 앞의 철판에서 조리되는 과정을 보며 맛과 즐거움까지 드리고자 노력하고 있습니다.', 
+'050714443881', 
+'서울 강남구 신사동 544-5 지하 1층', 
+'핫쵸 오코노미야끼 : 14,000원/칸조 야끼소바 : 13,000원/모단야끼 : 13,000언/토오가라시 야끼소바 : 13,000원', 
+'11:30', 
+'22:00', 
+'4.54',
+'가로수길', 
+'가로수길_food_out_2.png',
+'가로수길_food_in_2.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'골뱅이신사', 
+'자연산 골뱅이탕, 매콤한 닭발,자연산 통 문어숙회를 정성으로 만든 포장마차로써 아침7시까지 하는 골뱅이신사는 신사동술집 맛집입니다.', 
+'025495677', 
+'서울 강남구 신사동 516-6', 
+'생골뱅이탕 : 33,000원/꼬막 한판 : 30,000원/골뱅이 한판 : 49,000원', 
+'15:30', 
+'21:40', 
+'4.73', 
+'가로수길', 
+'가로수길_food_out_3.png',
+'가로수길_food_in_3.png'
+);
+
+INSERT INTO food ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'은행골', 
+'신선한 초밥과 참다랑어 참치회를 맛보실수 있습니다.', 
+'0234444988', 
+'서울 강남구 신사동 537-2 2층', 
+'특상초밥 : 20,000원/특선초밥 : 15,000원/특미초밥 : 10,000원/도로초밥 : 27,000원', 
+'11:00', 
+'21:00', 
+'4.44', 
+'가로수길', 
+'가로수길_food_out_4.png',
+'가로수길_food_in_4.png'
+);
+
+
+
+------------------------------------------------------cafe --------------------------------------
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('트리오드',
+'트리오드는 파티셰와 셰프, 그리고 그 사이에서 중심을 잡아주는 바리스타가 함께 공명하여 빛나는 경험을 만들어주는 공간입니다.',
+'025689427','서울 강남구 역삼동 649 유니언타운 L층',
+'아메리카노 : 5,000원 /블루베리 케익그람 : 5,700원',
+'11:00',
+'22:00',
+'4.5',
+'강남',
+'강남_cafe_out_1.png',
+'강남_cafe_in_1.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('카페 온화',
+'프리미엄 수플레 팬케이크 및 스페셜티 커피전문점 카페 온화',
+'07077152908',
+'서울 강남구 역삼동 812-18 2층',
+'플레인 수플레 : 16,000원/ 딸기 수플레 : 19,000원',
+'11:00',
+'22:00',
+'4.65',
+'강남',
+'강남_cafe_out_2.png',
+'강남_cafe_in_2.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('겟썸커피',
+'지하에 있는 분위기 좋은 카페 겟썸커피',
+'050713173619',
+'서울 강남구 역삼동 812-3 지하 1층 ',
+'더티 카푸치노 : 4,300원/아메리카노 : 3,500원',
+'11:00',
+'22:00',
+'4.50',
+'강남',
+'강남_cafe_out_3.png',
+'강남_cafe_in_3.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('브루커피',
+'해운대점을 기반으로 시작해 미국에서 오랫동안 경험해온 커피의 지식과 경험을 바탕으로 한 전문성을 아이덴티티로 손님들을 만족시키는 공간.',
+'050714861592',
+'서울 강남구 역삼동 825-27 1, 2층',
+'브루 라떼 : 6,000원/심플 화이트:5,500원/아메리카노 : 4,500원',
+'07:00',
+'22:00',
+'4.58',
+'강남',
+'강남_cafe_out_4.png',
+'강남_cafe_in_4.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('로아상 서울',
+'페이스트리와 디저트, RTD음료를 만들고 있습니다.',
+'07041409768',
+'서울 종로구 인사동 220-1',
+'플레인 크루아상 : 4,000원/샤뽀 : 4,500원/오리지널 콜드브루 : 3,800원',
+'11:30',
+'20:00',
+'4.79',
+'인사동',
+'인사동_cafe_out_1.png',
+'인사동_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('세루리안 인사',
+'인사동 지형들이 인테리어로 이루어진 카페',
+'050713895865',
+'서울 종로구 관훈동 83-2',
+'CAMOUFALGE: 6,500원/FLUFFY : 6,500원/AMANNA : 6,500원',
+'10:00',
+'21:00',
+'4.56',
+'인사동',
+'인사동_cafe_out_2.png',
+'인사동_cafe_in_2.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('차마시는뜰',
+'삼청동에서 즐기는 전통 찻집',
+'027227006',
+'서울 종로구 삼청동 35-169',
+'쌍화탕 : 9,000원/대추탕 : 9,000원/오미자차 : 8,000원',
+'12:00',
+'21:00',
+'4.5',
+'인사동',
+'인사동_cafe_out_3.png',
+'인사동_cafe_in_3.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('이투이',
+'스페셜티 커피 페어링 전문 카페로서 카페 이투이에서의 다채로운 경험을 통해 얻는 감성에 빠지는 공간.',
+'07088231301',
+'서울 종로구 관수동 130-1',
+'시그니처 페어링 코스 : 19,800원/몬트리얼 로얄 밀크티 : 10,000원/얼그레이 밀크티 : 9,000원',
+'11:00',
+'22:00',
+'4.57',
+'인사동',
+'인사동_cafe_out_4.png',
+'인사동_cafe_in_4.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('카페 연남색',
+'수제 쿠키 맛집. 모든 재료는 직접 공수하며 매장에서 실제로 디저트를 베이킹.',
+'050714849319',
+'서울 마포구 연남동 515-22 101호 카페 연남색',
+'황치즈쿠키 : 4,000원/땅콩크림라떼 : 6,000원/티라미수쿠키 : 4,000원',
+'11:00',
+'20:00',
+'4.98',
+'연남동',
+'연남동_cafe_out_1.png',
+'연남동_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('온순간',
+'정원이 있는 연남동 플라워 브런치 카페 입니다. 1층은 카페, 2층은 플라워 샵과 카페가 여러분을 기다립니다. ',
+'023250307',
+'서울 마포구 연남동 487-375 1층, 2층',
+'프렌치 토스트 : 18,000원/아메리카노 : 5,000원/청포도에이드 : 7,000원',
+'11:00',
+'21:00',
+'4.93',
+'연남동',
+'연남동_cafe_out_2.png',
+'연남동_cafe_in_2.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('청수당공명',
+'청수당의 다섯번째 걸음. 청수당-공명 입니다.',
+'07077917972',
+'서울 마포구 연남동 239-48 청수당공명',
+'말차우유 : 7,000원/스톤드립커피 : 5,800원/핸드드립어린잎 : 7,500원',
+'11:00',
+'22:00',
+'4.24',
+'연남동',
+'연남동_cafe_out_3.png',
+'연남동_cafe_in_3.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('테누커피',
+'불어로 정리가 된 의 테누 , 일본식 젠스타일의 인테리어 그리고 기와주택의 조화로 완성된 곳.',
+'01044802914',
+'서울 마포구 연남동 241-89 1층 테누커피',
+'아메리카노 : 4,500원/모찌 : 9,000원/테누커피 : 6,500원',
+'13:00',
+'21:00',
+'4.51',
+'연남동',
+'연남동_cafe_out_4.png',
+'연남동_cafe_in_4.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('보이스 스튜디오',
+'상수역 3분 이내 거리에 식물들과 깔끔한 인테리어의 보이스 스튜디오 입니다.',
+'050713280536',
+'서울 마포구 상수동 140-3',
+'아메리카노 : 5,000원/유기농 말차 라떼 : 6,000원/블루밍 에이드 : 6,000원',
+'08:00',
+'22:00',
+'4.57',
+'상수',
+'상수_cafe_out_1.png',
+'상수_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('펠리칸카페',
+'편한 대화가 가능한 좌식 공간, 2층엔 둘이서 즐길 수 있는 테라스가 준비되어 있는 펠리칸 카페입니다.',
+'050714598305',
+'서울 마포구 상수동 324-11',
+'펠리칸커피 : 5,000원/소보로크로플 : 5,700원/아메리카노 : 5,000원',
+'11:00',
+'20:00',
+'4.79',
+'상수',
+'상수_cafe_out_2.png',
+'상수_cafe_in_2.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('코코아트리',
+'상수동카페 코코아트리 입니다.',
+'050714983443',
+'서울 마포구 상수동 93-110 2층',
+'아메리카노 : 5,000원/카페라떼 : 5,500원/자몽에이드 : 6,000원',
+'12:00',
+'20:00',
+'4.8',
+'상수',
+'상수_cafe_out_3.png',
+'상수_cafe_in_3.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('루크',
+'커피로 제공할 수 있는 최상의 서비스와 차별화된 컨텐츠로 소비자들을 만족시킵니다.',
+'050713675881',
+'서울 마포구 상수동 323-1 1층 루크',
+'크로플 아이스크림 : 8,000원/커스텀 커피 : 6,000원/아메리카노 : 4,500원',
+'08:00',
+'19:00',
+'4.64',
+'상수',
+'상수_cafe_out_4.png',
+'상수_cafe_in_4.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('더 스팟 패뷸러스',
+'서울 중심 번화가에서 찾기 힘든 60년 넘은 근대 건축물 안에서 즐기는 Fabulous한 시간을 가져보세요.',
+'050714221981',
+'서울 중구 명동2가 105 1.2층',
+'스모어쿠키 : 3,800원/흑임자 아인슈페너 : 6,000원/아이스 수제 바닐라 라떼 : 5,500원',
+'10:30',
+'22:00',
+'4.54',
+'명동',
+'명동_cafe_out_1.png',
+'명동_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('아트몬',
+'분위기 있는 야경과 남산타워가 보이는 뷰까지, 연인과 함께 루프탑 데이트라면 아트몬 카페!',
+'050713699012',
+'서울 중구 남산동2가 49-14',
+'카페라떼 : 4,500원/아메리카노 : 3,500원/카푸치노 : 4,500원',
+'10:00',
+'22:00',
+'4.61',
+'명동',
+'명동_cafe_out_2.png',
+'명동_cafe_in_2.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('포비 을지로',
+'정성 가득 담은 베이글과 커피로 밝은 아침을 책임지고 활기찬 에너지를 선사하고자 합니다.',
+'0260200880',
+'서울 중구 수표동 99',
+'카푸치노 : 4,500원/피콜로 : 4,000원/플랫화이트 : 4,500원',
+'07:00',
+'21:00',
+'4.5',
+'명동',
+'명동_cafe_out_3.png',
+'명동_cafe_in_3.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('바움',
+'바움은 국산 곡물들로 세척, 스팀기에 찌는 과정, 건조, 로스팅 등의 과정을 거쳐 곡물가루와 음료를 만들고 있습니다.',
+'07088667757',
+'서울 용산구 이태원동 207-7',
+'기본.5 : 5,500원/기본.쑥6 : 6,000원/기본.흑6 : 6,500원',
+'10:30',
+'19:30',
+'4.9',
+'이태원',
+'이태원_cafe_out_1.png',
+'이태원_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('리젠트스카이 루프탑 카페',
+'서울 한복판에 위치한 특별한 루프탑 카페.',
+'050713597541',
+'서울 용산구 이태원동 260-230',
+'아메리카노 : 7,000원/칵테일 : 15,000원/조각케이크 : 7,000원',
+'14:00',
+'21:30',
+'4.71',
+'이태원',
+'이태원_cafe_out_2.png',
+'이태원_cafe_in_2.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('테이프',
+'은하수 우주 케이크가 유명하고, 고급 원두를 사용하여 내린 커피가 특징인 카페 테이프',
+'050714195608',
+'서울 용산구 이태원동 63-5 2층 TAPE',
+'아메리카노 : 5,000원/콜드브루 : 6,000원/케이크 : 변동',
+'12:00',
+'22:00',
+'4.35',
+'이태원',
+'이태원_cafe_out_3.png',
+'이태원_cafe_in_3.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('서울커피 익선점',
+'앙버터 식빵이 유명하고 옛 정취를 서울 정중앙에서 느낄 수 있는 카페.',
+'050714044890',
+'서울 종로구 익선동 166-31',
+'앙버터식빵 : 4,500원/인절미 티라미수 : 7,000원/아메리카노 : 5,000원',
+'11:00',
+'22:00',
+'4.53',
+'익선동',
+'익선동_cafe_out_1.png',
+'익선동_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('시그니처알',
+'커피가 맛있는 한옥형 로스터리.',
+'01042474832',
+'서울 종로구 익선동 166-6 시그니처 R',
+'라떼 : 5,500원/아메리카노 : 5,000원/브리티쉬 라떼 : 6,100원',
+'10:30',
+'22:00',
+'4.51',
+'익선동',
+'익선동_cafe_out_2.png',
+'익선동_cafe_in_2.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('식물',
+'익선동의 과거와 현재가 교차하는 카페',
+'027427582',
+'서울 종로구 익선동 166-62',
+'아메리카노 : 5,000원/라떼 : 5,500원/플랫화이트 : 5,000원',
+'12:00',
+'22:00',
+'4.4',
+'익선동',
+'익선동_cafe_out_3.png',
+'익선동_cafe_in_3.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('우물',
+'색감과 조화를 중요시하는 카페',
+'050713531816',
+'서울 광진구 화양동 2-1 1층',
+'아메리카노 : 4,300원/라뗴 : 4,600원/토마토 에이드 : 6,000원',
+'12:00',
+'22:00',
+'4.76',
+'건대',
+'건대_cafe_out_1.png',
+'건대_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('북카페세모',
+'책, 디저트, 와인과 함께 파티가 열리는 곳. 루프탑 카페.',
+'050713698005',
+'서울 광진구 화양동 8-43 2층, 3층',
+'녹차 아인슈페너 : 6,500원/우주를 줄게 : 6,500원/게이샤 아메리카노 : 4,500원',
+'12:00',
+'22:00',
+'4.76',
+'건대',
+'건대_cafe_out_2.png',
+'건대_cafe_in_2.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('카페 26',
+'대표 메뉴인 아인슈페너를 기반으로, 아이스크림과 크로플 등이 맛있는 카페입니다.',
+'07086723050',
+'서울 광진구 화양동 110-40 2F카페 / 6F루프탑라운지',
+'아이스크림 크로플 : 6,500원/아인슈페너 : 4,500원/비엔나 밀크티 라떼 : 5,000원',
+'12:00',
+'21:00',
+'4.68',
+'건대',
+'건대_cafe_out_3.png',
+'건대_cafe_in_3.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('학림',
+'세월이 고스란히 남아있는 고즈넉한 카페',
+'027422877',
+'서울 종로구 명륜4가  94-2 2층 학림카페',
+'크림 치즈케익 : 6,000원/비엔나커피 : 6,000원/파르페 : 8,000원',
+'10:00',
+'22:00',
+'4.51',
+'대학로',
+'대학로_cafe_out_1.png',
+'대학로_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('369마실',
+'성곽길따라 여유있는 한옥 카페.',
+'050713202787',
+'서울 성북구 삼선동1가 11-123',
+'아메리카노 : 3,000원/카페라떼 : 3,500원/카푸치노 : 3,500원',
+'11:00',
+'19:00',
+'4.52',
+'대학로',
+'대학로_cafe_out_2.png',
+'대학로_cafe_in_2.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('카페 선선혜화',
+'작지만 따뜻하며 분위기 좋은 카페 선선혜화 입니다.',
+'050713860047',
+'서울 종로구 명륜4가 164-1 3층 카페 선선혜화',
+'아메리카노 : 4,100원/카페라떼 : 4,500원/더티초코 크로플 : 8,500원',
+'12:00',
+'20:30',
+'4.66',
+'대학로',
+'대학로_cafe_out_3.png',
+'대학로_cafe_in_3.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('퍼스트커피랩',
+'전문 바리스타양성 기관인 [퍼스트 바리스타 아카데미]에서 운영하는 카페입니다.',
+'07078678367',
+'서울 마포구 동교동 179-39',
+'아인슈페너 : 6,000원/아메리카노 : 4.500원/카페라떼 : 5,000원',
+'09:00',
+'21:00',
+'4.75',
+'홍대',
+'홍대_cafe_out_1.png',
+'홍대_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('공미학',
+'공미학의 공은 비어있음을 의미하며, 이 공간에서 무엇을 채우던 다 의미가 있는 미학으로 탄생한다는 의미를 가짐. ',
+'050713743349',
+'서울 마포구 동교동 165-5 카카오프렌즈 3층',
+'마포의 미학 : 7,800원/친구의 미학 : 7,800원/딸기듬뿍라떼 : 6,800원',
+'11:00',
+'23:00',
+'4.58',
+'홍대',
+'홍대_cafe_out_2.png',
+'홍대_cafe_in_2.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('카페 오로라',
+'라운지같은 편안함의 1층과 예술적 전시회 느낌의 지하로 구성되어 있습니다!',
+'050713998450',
+'서울 마포구 서교동 337-36 1F 1F, B1F',
+'드립커피 : 6,500원/돌체 콜드브루 : 6,500원/아메리카노 : 5,000원',
+'12:00',
+'20:00',
+'4.77',
+'홍대',
+'홍대_cafe_out_3.png',
+'홍대_cafe_in_3.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('레레플레이',
+'동대문에 몇 안되는 고전적 이미지를 지닌 카페.',
+'050714132092',
+'서울 중구 황학동 753-33 1, 2층',
+'커피 맑음 : 6,000원/커피 구름 : 8,000원/자메이카 블루마운틴 : 15,000원',
+'11:00',
+'20:00',
+'4.55',
+'동대문',
+'동대문_cafe_out_1.png',
+'동대문_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('차차티클럽',
+'준비된 차 도구를 이용해 직접 차를 우려 마셔볼 수 있는 공간.',
+'050714049489',
+'서울 종로구 창신동 461-2',
+'찻차리 : 8,000원/설기 카스텔라 : 6,800원/말차의 섬 : 6,500원',
+'13:00',
+'22:00',
+'4.64',
+'동대문',
+'동대문_cafe_out_2.png',
+'동대문_cafe_in_2.png');
+
+
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('C27 가로수길점',
+'달콤하고 진한 27가지의 프리미엄 치즈케이크의 향연. 70%의 치즈 함유량을 보여주는 오리지널 치즈케익의 맛을 보세요.',
+'025441527',
+'서울 강남구 신사동 545-12',
+'치즈케이크 : 8,900원/C27 coffee : 6,000원/치즈라떼 : 6,500원',
+'11:00',
+'21:00',
+'4.28',
+'가로수길',
+'가로수길_cafe_out_1.png',
+'가로수길_cafe_in_1.png');
+INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('아우어 베이커리',
+'빵이 유명한 맛집. 이영자의 픽.',
+'025463800',
+'서울 강남구 신사동 523-19',
+'아메리카노 : 4,300원/더티초코 : 4,700원/바닐라더블 : 5,200원',
+'09:00',
+'20:00',
+'4.46',
+'가로수길',
+'가로수길_cafe_out_2.png',
+'가로수길_cafe_in_2.png');
+
+
+-------------------------------------------etc --------------------------------------------
+-- 이색 데이트 insert 
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('X텐 실내양궁장',
+'새로운 경험을 해보자 쏘는 순간 내 마음에 쏙!',
+'01050579422',
+'서울 강남구 역삼로20길 6 B1층',
+'60발 : 15,000원/한시간 : 20,000원',
+'10:00',
+'22:00',
+'4.6',
+'강남',
+'강남_etc_out_1.jpg',
+'강남_etc_in_1.jpg');
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('보드게임카페 레드버튼',
+'인생취미 레드버튼! 최상의 경험으로 여러분께 인생취미를 선물합니다.',
+'050713803799',
+'서울 강남구 강남대로 442 1층',
+'1인 1시간 : 3,000원/아메리카노 : 3,000원',
+'13:00',
+'01:00',
+'4.3',
+'강남',
+'강남_etc_out_2.jpg',
+'강남_etc_in_2.jpg');
+
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('반지대학 명동캠퍼스',
+'연인과의 반지로 사랑을 만드세요.',
+'050714156620',
+'서울 중구 명동2길 52 4층',
+'반지만들기 : 40,000원/아메리카노 : 2,000원',
+'10:30',
+'21:00',
+'4.8',
+'명동',
+'명동_etc_out_1.jpg',
+'명동_etc_in_1.jpg');
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+VALUES ('소마드로잉카페',
+'당신의 취미가 시작되는 공간, 이색 드로잉카페 SOMA에서 나만의 작품을!',
+'050714957941',
+'서울 중구 명동2길 52 4층',
+'캔버스 小 : 19,900원/캔버스 中 : 21,900원',
+'12:00',
+'22:00',
+'4.7',
+'명동',
+'명동_etc_out_2.jpg',
+'명동_etc_in_2.jpg');
+
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'토독공방',
+'개성이 담뿍 담긴 특별한 도장과 돌을 손수 깎아서 내가 원하는 디지인해서 도장을 만들 수 있습니다.',
+'050713833812',
+'서울특별시 종로구 인사동 60 1층 서울특별시 종로구 관훈동 123-4 1층',
+'수제도장 아기 비단잉어 도장 선물 인감 직인 낙관 : 35,000원/수제도장 아기도장 커플도장 선물 인감 직인 낙관 : 24,000원',
+'10:00',
+'21:00',
+'4.45',
+'인사동',
+'인사동_etc_out_1.jpg',
+'인사동_etc_in_1.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'스모어마켓',
+'앨리스를 따라 토끼굴에 빠져 탐험을 떠나보고 내부에서 디즈니 테마로 찍을 수 있는 인생네컷도 함께 준비 되어 있습니다.',
+'07071166809',
+'서울특별시 마포구 연남동 23-34 지하 1층 이상한 나라의 팝업스토어지',
+'앨리스 멀티클리너 : 3,000원',
+'13:00',
+'21:00',
+'4.52',
+'연남동',
+'연남동_etc_out_1.jpg',
+'연남동_etc_in_1.jpg'
+);
+
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'121르말뒤페이',
+'실제로 고객님이 만족하며, 사용할 수 있는 좋은 향수를 제작합니다.',
+'023367323',
+'서울 마포구 와우산로13길 40',
+'나만의 향수-50ml : 20,000원/디퓨져 리필액-100ml : 15,000원',
+'13:00',
+'20:30',
+'4.72',
+'상수',
+'상수_etc_out_1.jpg',
+'상수_etc_in_1.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'친구네다락방',
+'친구랑 앉아서 수다떨면서 과자먹고 만화책도 보고 게임도 하고 쉬면서 알찬 하루 즐길 수 있습니다.',
+'050713470121',
+'서울특별시 마포구 상수동 312-5',
+'1인당 2시간 : 7,000원/음식 또는 음료수는 별도',
+'13:00',
+'22:00',
+'4.68',
+'상수',
+'상수_etc_out_2.jpg',
+'상수_etc_in_2.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'그림집',
+'도안 제한 없음! 마음 가는 대로 캔버스 & 에코백에 그림을 그리는 미술 공방입니다.',
+'050714869876',
+'서울특별시 용산구 이태원동 455-35',
+'2인 캔버스 페인팅 이용권 : 44,000원',
+'13:00',
+'21:00',
+'4.88',
+'이태원',
+'이태원_etc_out_1.jpg',
+'이태원_etc_in_1.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'바이닐앤플라스틱',
+'이태원에 위치한 음악 감상이 가능한 대규모 음반숍입니다.',
+'0220147800',
+'서울특별시 용산구 한남동 683-131',
+'1인당 : 8,000원',
+'12:00',
+'21:00',
+'4.58',
+'이태원',
+'이태원_etc_out_2.jpg',
+'이태원_etc_in_2.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'엉클비디오타운',
+'조용한 아득한 곳에서 커피 또는 과자 먹으면서 영화를 한편을 즐길수 있습니다.',
+'050714869876',
+'서울특별시 종로구 수표로 28길 33-10',
+'1인당 : 11,500원',
+'11:00',
+'23:00',
+'4.68',
+'익선동',
+'익선동_etc_out_1.jpg',
+'익선동_etc_in_1.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'리얼샷',
+'강한 반동으로 손끝에 느껴지는 소름! 권총부터 저격총까지 한 번에 즐길 수 있는 사격장입니다.',
+'0264091112',
+'서울특별시 종로구 익선동 166-55',
+'2인 3종 패키지 이용권 : 11,000원',
+'14:00',
+'22:30',
+'4.78',
+'익선동',
+'익선동_etc_out_2.jpg',
+'익선동_etc_in_2.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'위티스',
+'19곰 테드 등 많은 캐릭터들이 한곳에 모이고 핑크 핑크한 외관부터 눈에 띄는 사랑스러운 소품 숍 입니다.',
+'01053881234',
+'서울특별시 광진구 화양동 16-44',
+'자유 이용권 : 20,000원',
+'13:00',
+'21:00',
+'4.68',
+'건대',
+'건대_etc_out_1.jpg',
+'건대_etc_in_1.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'더빛나는 조이상점',
+'맑게 빛나는 유리컵에 우리만의 꾸미기로 세상에 하나뿐인 컵을 만들 수 있는 유리공방입니다.',
+'01058433212',
+'서울특별시 광진구 군자동 503',
+'2인 유예 원데이 클래스 : 45,000원',
+'11:00',
+'21:00',
+'4.88',
+'건대',
+'건대_etc_out_2.jpg',
+'건대_etc_in_2.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'보드게임 보드놀이터',
+'실내데이터에 제격인 보드 게임을 맘껏 즐길 수 있는 곳입니다.',
+'0264052345',
+'서울특별시 마포구 서교동 358-8 4층',
+'4인당 이하 : 3,000원',
+'13:00',
+'24:00',
+'4.41',
+'홍대',
+'홍대_etc_out_1.jpg',
+'홍대_etc_in_1.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'무신사 테라스',
+'갤러리와 쇼핑, 루프탑에서 바라보는 홍대와 연남동의 아름다운 전경까지 한곳을 즐길 수 있는 복합문화공간입니다.',
+'07040055543',
+'서울특별시 마포구 동교동 190-1 17층',
+'매장 이용시 별도',
+'11:00',
+'20:00',
+'4.83',
+'홍대',
+'홍대_etc_out_2.jpg',
+'홍대_etc_in_2.jpg'
+);
+
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'놀숲',
+'만화 좋아하는 덕후들부터 웹툰 좋아하는 모든 일반인들까지 모두 편안하게 즐길 수 있는 만화카페입니다.',
+'050431232342',
+'서울 동대문구 회기동 60~59',
+'2인 2시간 평일 이용권 : 8,000원',
+'11:00',
+'24:00',
+'4.45',
+'동대문',
+'동대문_etc_out_1.jpg',
+'동대문_etc_in_1.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'스토리 앤 스타일',
+'성격 유형 검사와 퍼스널 컬러 진단으로 맞춤 스타일링 전랴을 세워주는 커뮤니케이션 센터입니다.',
+'023361232',
+'서울특별시 영등포구 여의도동 25',
+'2인 스타일 성격유형 이용권 : 70,000원',
+'10:00',
+'19:30',
+'4.83',
+'동대문',
+'동대문_etc_out_2.jpg',
+'동대문_etc_in_2.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'프레티카 쥬얼리',
+'스케치부터 제작까지! 전문 디자이너의 손길이 한땀 담긴 쥬얼리로 커플템을 구매 할 수 있는 샵입니다..',
+'022317171',
+'서울특별시 강남구 신사동 546-4',
+'반지 : 22,000 ~ 89,000원/귀걸이 : 22,000원',
+'11:00',
+'22:00',
+'4.88',
+'가로수길',
+'가로수길_etc_out_1.jpg',
+'가로수길_etc_in_1.jpg'
+);
+
+INSERT INTO etc ( name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage)
+values(
+'반지 만들기 젬 하우스',
+'우리의 추억과 시간을 말해주는 반지 더욱 섬세하고 높은 퀄리티로 직접 만들어 보는 샵입니다.',
+'050430128154',
+'서울특별시 강남구 신사동 515-9',
+'2인 반지 만들기 평일 이용권 : 56,000원',
+'11:00',
+'21:00',
+'4.91',
+'가로수길',
+'가로수길_etc_out_2.jpg',
+'가로수길_etc_in_2.jpg'
+);
+
+
+----------------------shows ------------------------
+INSERT INTO shows (name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage,link)
+values('지킬 앤 하이드',
+'대한민국 뮤지컬 역사상 가장 압도적인 흥행작 당신의 심장을 뛰게 할 전율의 무대',
+'18776077',
+'서울특별시 송파구 올림픽로 240 (잠실동)',
+'VIP석 : 150,000원/R석 : 130,000원/S석 : 100,000원/A석 70,000원',
+'14:00',
+'22:00',
+'4.7',
+'잠실',
+'잠실_out_shows_1.jpg',
+'잠실_in_shows_1.jpg',
+'https://kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF178981#n');
+
+INSERT INTO shows (name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage,link)
+values('곤 투모로우',
+'세발의 총성 사라진 내일, 갈 수 없는 나라',
+'15773363',
+'서울특별시 종로구 대학로 57',
+'VIP석 : 99,000원/ R석 : 88,000원/S석 : 66,000원',
+'14:00',
+'22:00',
+'4.4',
+'종로',
+'종로_out_shows_1.jpg',
+'종로_in_shows_1.jpg',
+'https://kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF181384#n');
+
+INSERT INTO shows (name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage,link)
+values('하데스타운',
+'수천 년 전 신화의 새로운 변주 지금 여기, 그리고 어디에나 존재하는 사랑에 관한 이야기',
+'15773363',
+'서울특별시 강남구 논현로 508 (역삼동) GS강남타워',
+'VIP석 : 150,000원/R석 : 130,000원/S석 : 100,000원/A석 : 70,000원',
+'14:00',
+'22:00',
+'4.5',
+'강남',
+'강남_out_shows_1.jpg',
+'강남_in_shows_1.jpg',
+'https://kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF176020#n');
+
+INSERT INTO shows (name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage,link)
+values('작은 아씨들',
+'마치 가(家)의 단란한 네 자매, 이들은 누구보다 서로를 아끼고, 사랑하며 그들만의 다양한 추억들을 쌓으며 살아간다.',
+'0220982942',
+'서울특별시 종로구 동숭길 123 (동숭동) 드림아트센터',
+'전석 : 66,000원',
+'14:00',
+'22:00',
+'4.8',
+'종로',
+'종로_out_shows_2.jpg',
+'종로_in_shows_2.jpg',
+'https://kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF178384');
+
+INSERT INTO shows (name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage,link)
+values('쿠로이 저택엔 누가 살고 있을까?',
+'꿈이 집어 삼켜진 일제 식민지 시대, 형을 잃고 숨어지내던 해웅은 알 수 없는 힘에 이끌려...',
+'0220982942',
+'서울특별시 종로구 대학로12길 73 (동숭동) 쁘티첼시어터',
+'R석 : 66,000원/S석 : 44,000원',
+'14:00',
+'22:00',
+'4.6',
+'종로',
+'종로_out_shows_3.jpg',
+'종로_in_shows_3.jpg',
+'https://kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF181530');
+
+INSERT INTO shows (name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage,link)
+values('소춘대유희',
+'백 년 전, 역병으로 공연을 못한 광대들, 시공간을 넘어 코로나로 실의에 빠진 광대들을 달래주러 왔다!',
+'027511500',
+'서울특별시 중구 정동길 43 (정동) 정동극장',
+'전석 : 40,000원',
+'15:00',
+'22:00',
+'4.4',
+'중구',
+'중구_out_shows_3.jpg',
+'중구_in_shows_3.jpg',
+'https://www.jeongdong.or.kr/portal/main/main.do');
+
+INSERT INTO shows (name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage,link)
+values('창업',
+'새로운 나라를 만들기 위한 피 튀기는 경쟁 썩어가는 나라를 새롭게 바꾸고자 하는 두 가치관의 대립이 시작된다!',
+'0220982942',
+'서울특별시 종로구 동숭길 25 (동숭동)',
+'R석 : 66,000원/S석 : 55,000원',
+'14:00',
+'22:00',
+'4.3',
+'종로',
+'종로_out_shows_4.jpg',
+'종로_in_shows_4.jpg',
+'https://kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF178072');
+
+INSERT INTO shows (name, content, phone, addr,menu,opentime,closetime,grade,location,outimage,inimage,link)
+values('아가사',
+'전 세계를 떠들썩하게 만든 실화! 1926년 "아가사 크리스티"실종 사건',
+'0236720900',
+'서울특별시 종로구 대학로12길 64',
+'R석 : 88,000원/S석 : 66,000원/A석 : 44,000원',
+'14:00',
+'22:00',
+'4.2',
+'종로',
+'종로_out_shows_5.jpg',
+'종로_in_shows_5.jpg',
+'https://kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF178072');

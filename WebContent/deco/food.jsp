@@ -104,7 +104,7 @@
           <div class="makeReviewGrade">
             <div>평점</div>
             <div> 
-              <input type="number" name="grade"class="gradeInput" max="5" min ="1" value="5" > 
+              <input type="number" name="grade"class="gradeInput" max="5" min ="1" value="5"  > 
             </div>
           </div>
           <div class="makeReviewChooseImg">
