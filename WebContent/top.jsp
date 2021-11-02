@@ -13,6 +13,7 @@
   </script>
 </head>
 <body>
+<<<<<<< HEAD
 <header class="topheader">
     <a href="home.deco" class="logo">
       <div class="toplogo">
@@ -29,6 +30,24 @@
       <a href="">${user.name }</a>
       <span> 님 반갑습니다.</span>
       <a href="logout.deco" class="topmenu">로그아웃</a>
+=======
+<header class="header">
+    <a href="home.deco" class="logo">
+      <div class="logo">
+        DECO
+      </div>
+    </a>
+    <ul class="menu">
+      <li><a href="cafeList.deco">Search</a></li>
+      <li><a href="best.deco">Hot Place</a></li>
+      <li><a href="restration.deco">Registration</a></li>
+      <li><a href="mypage.deco">My Page</a></li>
+    </ul>
+    <div class="nickname">
+      <a href="">${user.name }</a>
+      <span> 님 반갑습니다.</span>
+      <a href="logout.deco" class="menu">로그아웃</a>
+>>>>>>> refs/remotes/origin/master
     </div>
     <a href="#" class="hamburger"><i class="fas fa-bars"></i></a>
   </header>

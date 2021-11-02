@@ -23,6 +23,7 @@ public class UsersDao {
 	public Users getUser(int idx) {
 		SqlSession mapper = factory.openSession();
 <<<<<<< HEAD
+<<<<<<< HEAD
 		Users users = mapper.selectOne("getUser", idx);
 		mapper.close();
 		return users;
@@ -110,13 +111,33 @@ public class UsersDao {
 	}
 =======
 		Users users = mapper.selectOne("getUser");
+=======
+		Users users = mapper.selectOne("getUser", idx);
+>>>>>>> refs/remotes/origin/master
 		mapper.close();
 		return users;
 	}
 	
+	
+	public Users getUser2(Users user) {
+		SqlSession mapper = factory.openSession();
+		mapper.update("users.passwordCheck", user);
+		mapper.close();
+		return user;
+	}
+	
+	
+	
+	
 	public void insert(Users users) {
 		SqlSession mapper = factory.openSession();
 		mapper.insert("users.insert", users);
+		mapper.commit();
+		mapper.close();
+	}
+	public void dibsinsert(String nickname ) {
+		SqlSession mapper = factory.openSession();
+		mapper.insert("users.dibsinsert", nickname);
 		mapper.commit();
 		mapper.close();
 	}
@@ -137,8 +158,50 @@ public class UsersDao {
 		return dto;
 	}
 	
+	public void delete(int idx) {
+		SqlSession mapper = factory.openSession();
+		mapper.delete("users.delete", idx);
+		mapper.commit();
+		mapper.close();
+	}
+	public void dibsDelete2(String nickname) {
+		SqlSession mapper = factory.openSession();
+		mapper.delete("users.dibsDelete2", nickname);
+		mapper.commit();
+		mapper.close();
+	}
+	public void reviesDelete(String nickname) {
+		SqlSession mapper = factory.openSession();
+		mapper.delete("users.reivewDelete", nickname);
+		mapper.commit();
+		mapper.close();
+	}
+	public Users emailCheck(Map<String, String> map) {
+		SqlSession mapper = factory.openSession();
+		Users users = new Users();
+		users = mapper.selectOne("users.emailCheck", map);
+		mapper.close();
+		return users;
+	}
+	public Users passwordCheck(Map<String, String> map) {
+		SqlSession mapper = factory.openSession();
+		Users users = new Users();
+		users = mapper.selectOne("users.passwordCheck", map);
+		mapper.close();
+		return users;
+	}
 	
+<<<<<<< HEAD
 	
 >>>>>>> refs/remotes/origin/마스터-승인해주세요
+=======
+	public Users changeCheck(Map<String, String> map) {
+		SqlSession mapper = factory.openSession();
+		Users user = new Users();
+		user = mapper.selectOne("users.passwordupdate",user);
+		mapper.close();
+		return user;
+	}
+>>>>>>> refs/remotes/origin/master
 	
 }

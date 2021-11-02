@@ -11,6 +11,9 @@ public interface Action {
 			throws ServletException, IOException;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // 깃ㅇㅇㅇㅇ
 >>>>>>> refs/remotes/origin/마스터-승인해주세요
+=======
+>>>>>>> refs/remotes/origin/master

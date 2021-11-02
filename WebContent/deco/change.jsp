@@ -11,7 +11,11 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <%@ include file="../top.jsp" %>
+=======
+<%@ include file="../top3.jsp" %>
+>>>>>>> refs/remotes/origin/master
 
 <section>
 <div>

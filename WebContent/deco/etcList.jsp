@@ -18,6 +18,10 @@
 		<nav class="category">
 			<a href="cafeList.deco">Cafe</a> <a href="foodList.deco">Restaurant</a>
 			<a href="showsList.deco">Show</a> <a href="etcList.deco">Activity</a>
+<<<<<<< HEAD
+=======
+			<a href="home.deco">home</a>
+>>>>>>> refs/remotes/origin/master
 		</nav>
 
 		<section class="checkbox main">

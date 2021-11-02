@@ -76,8 +76,13 @@
 			<c:set var="pno" value="${pageDto.currentPage}" />
 			<c:forEach var="vo" items="${CafeList}" varStatus="status">
 				<a class="list" href="cafe.deco?idx=${vo.idx}&page=${pno}"> <img
+<<<<<<< HEAD
 					src="/cimage/${vo.outimage}"
 					onerror="this.src='srcimg/기본이미지.png'" alt="cafe-out"
+=======
+					src="/image/${vo.outimage}"
+					onerror="this.src='img/연남동_cafe_out_1.png'" alt="cafe-out"
+>>>>>>> refs/remotes/origin/master
 					class="img" width="150px" height="150px">
 					<ul class="listContents">
 						<li class="listName">${vo.name }</li>

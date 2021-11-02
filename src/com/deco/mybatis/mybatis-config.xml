@@ -13,6 +13,9 @@
   	<typeAlias type="com.deco.dto.Dibs" alias="Dibs"/>
   	<typeAlias type="com.deco.dto.Review" alias="Review"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> refs/remotes/origin/master
   	<typeAlias type="com.deco.dto.Food" alias="Food"/>
   	<typeAlias type="com.deco.dto.Shows" alias="Shows"/>
   	<typeAlias type="com.deco.dto.Etc" alias="Etc"/>
@@ -42,6 +45,7 @@
     <mapper resource="com/deco/mybatis/food.xml"/>
     <mapper resource="com/deco/mybatis/shows.xml"/>
     <mapper resource="com/deco/mybatis/etc.xml"/>
+<<<<<<< HEAD
 =======
   	
   </typeAliases>
@@ -67,6 +71,8 @@
     <mapper resource="com/deco/mybatis/dibs.xml"/>
     <mapper resource="com/deco/mybatis/review.xml"/>
 >>>>>>> refs/remotes/origin/마스터-승인해주세요
+=======
+>>>>>>> refs/remotes/origin/master
    
     <!-- sql mapper 파일은 여러개 사용될 수 있음. -->
   </mappers>
