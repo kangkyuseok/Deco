@@ -1,6 +1,7 @@
 package com.deco.controller.action;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +50,29 @@ public class ReviewListAction implements Action {
 		
 		request.setAttribute("ReviewList", list);
 		request.setAttribute("pageDto", pageDto);
+=======
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+import com.deco.dao.ReviewDao;
+import com.deco.dto.Review;
+
+public class ReviewListAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		ActionForward forward = new ActionForward();
+		
+		ReviewDao dao = ReviewDao.getInstance();
+		
+		List<Review> list = dao.getList();
+		request.setAttribute("ReviewList", list);
+>>>>>>> refs/remotes/origin/마스터-승인해주세요
 		
 		forward.isRedirect = false;
 		forward.url="deco/reviewList.jsp";

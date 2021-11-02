@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="cafe">
+<<<<<<< HEAD
 	<!-- <select id="getList" resultType="Cafe">
 		select * from cafe order by grade desc
 	</select> -->
@@ -68,4 +69,22 @@
  	<select id="cafeBest" resultType="Cafe">
       select * from cafe order by grade desc limit 3
    </select>
+=======
+	<select id="getList" resultType="Cafe">
+		select * from cafe order by grade desc
+	</select>
+	<select id="getOne" resultType="Cafe" parameterType="int">
+		select * from cafe where idx = #{idx}
+	</select>
+	<insert id="insert" parameterType="Cafe">
+		INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location)
+		VALUES (#{name},#{content},#{phone},#{addr},#{menu},#{opentime},#{closetime},#{grade},#{location})
+	</insert>
+	<update id="update" parameterType="Cafe">
+ 		update cafe set name=#{name},content=#{content},phone=#{phone}, addr=#{addr}, grade=#{grade}, 
+ 		menu=#{menu},opentime=#{opentime},closetime=#{closetime},location=#{location}
+ 		where idx=#{idx}
+ 	</update>
+
+>>>>>>> refs/remotes/origin/마스터-승인해주세요
 </mapper>

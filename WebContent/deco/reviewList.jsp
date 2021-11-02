@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 </head>
+<<<<<<< HEAD
 <title>::deco::리뷰목록</title>
 <link rel="stylesheet" href="css/reviewList.css">
 <body>
@@ -145,5 +146,23 @@
 <div class="topBtn">
         <a href="#" title="위로 가기"><i class="fas fa-arrow-up"></i></a>
       </div>
+=======
+<title>deco ::리뷰목록</title>
+<body>
+<div>
+</div>
+	<div>
+	<form action="review.deco" method="get">
+	<h3>리뷰리스트</h3>
+	<c:forEach var="vo" items="${ReviewList}">
+	<ul>
+		<li>${vo.nickname }</li>
+		<li>${vo.content }</li>
+		<li>${vo.grade }</li>
+	</ul>
+	</c:forEach>
+	</form>
+	</div>
+>>>>>>> refs/remotes/origin/마스터-승인해주세요
 </body>
 </html>

@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
+<<<<<<< HEAD
 <mapper namespace="dibs">
 
 	<select id="getDibs" resultType="Dibs" parameterType="String">
@@ -37,4 +38,16 @@
   	<delete id="dibsDelete" parameterType="String">
   		delete from dibs where nickname = #{nickname}
   	</delete>
+=======
+<mapper namespace="users">
+
+	<select id="getDibs" resultType="Dibs" parameterType="String">
+		select * from dibs where nickname=#{nickname}
+	</select>
+  	
+  	<select id="getCafeDibs" resultType="Cafe" parameterType="int">
+  		select * from cafe where idx=#{idxCafe}
+  	</select>
+  	
+>>>>>>> refs/remotes/origin/마스터-승인해주세요
 </mapper>

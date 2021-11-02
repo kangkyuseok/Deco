@@ -13,6 +13,7 @@
 	values(#{name},#{password},#{email},#{gender},#{age},#{phone},#{addr},#{nickname})
   </insert>
   
+<<<<<<< HEAD
   <insert id="dibsinsert" parameterType="String">
   	insert into dibs(dibCafe,dibFood,dibShow,dibEx,nickname)
 	values('/','/','/','/',#{nickname})
@@ -61,6 +62,19 @@
   
   
   
+=======
+  <!-- 일단은 <나이, 전화번호> 만 수정 !! -->
+  <update id="update" parameterType="Users">
+  	update users set age=#{age},phone=#{phone} where idx=#{idx} 
+  </update>
+  
+  
+  <!-- 로그인정보 session에 담기 위한 메소드 -->
+  <select id="loginCheck" parameterType="java.util.Map" resultType="SessionDto">
+		select * from users where email = #{email} 
+		and password = #{password}
+	</select>
+>>>>>>> refs/remotes/origin/마스터-승인해주세요
   
   
 </mapper>

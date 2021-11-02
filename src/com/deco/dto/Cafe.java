@@ -20,6 +20,9 @@ public class Cafe {
 	private String closetime;
 	private double grade;
 	private String location;
+<<<<<<< HEAD
 	private String outimage;
 	private String inimage;
+=======
+>>>>>>> refs/remotes/origin/마스터-승인해주세요
 }
