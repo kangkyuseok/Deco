@@ -7,14 +7,6 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <welcome-file>home_login.deco</welcome-file>
-=======
-    <welcome-file>home_login.jsp</welcome-file>
->>>>>>> refs/remotes/origin/마스터-승인해주세요
-=======
-    <welcome-file>home_login.deco</welcome-file>
->>>>>>> refs/remotes/origin/master
   </welcome-file-list>
 </web-app>

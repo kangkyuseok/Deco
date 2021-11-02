@@ -10,10 +10,3 @@ public interface Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-// 깃ㅇㅇㅇㅇ
->>>>>>> refs/remotes/origin/마스터-승인해주세요
-=======
->>>>>>> refs/remotes/origin/master

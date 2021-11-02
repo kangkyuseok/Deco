@@ -28,11 +28,7 @@
     <section class="lists">
     <c:forEach var="vo" items="${dibsCafe}" varStatus="status">
       <a class="list" href="cafe.deco?idx=${vo.idx}">
-<<<<<<< HEAD
         <img src="/cimage/${vo.outimage}" onerror="this.src='srcimg/기본이미지.png'" alt="cafe-out" class="img" width="150px" height="150px">
-=======
-        <img src="/image/${vo.outimage}" onerror="this.src='img/기본이미지.png'" alt="cafe-out" class="img" width="150px" height="150px">
->>>>>>> refs/remotes/origin/master
         <ul class="listContents">
           <li class="listName">${vo.name }</li>
           <li class="listText">${vo.menu }</li>
